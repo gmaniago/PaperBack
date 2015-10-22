@@ -3,12 +3,17 @@
 ## Description
   **PaperBack** is an application that lets booklovers from all over organize and search books.
 
-Taking inspiration from my appreciation for books. I would like to build an app that will help me search and organize the books that I would like to read and save them.
+###Why
+Taking inspiration from my appreciation for books. I would like to build an app that will help users search and organize the books that they would like to read. Often times, we are not readily available to run to the library or the bookstore. PaperBack would be a good alternative. The app will take advantage of most of what Google Books API has to offer and transform it to an easy to use interface.
 
-Users will be able to register and log in. Books will be shown for them to be able to choose a book or a search bar can also be used.
+###How
+Everyone should have the opportunity to explore the world of literature and with the use of Google's API we are free to explore a vast amount of books. 
+
+###What
+Using the app, the reader will be able to register and log in to their account. Once logged in they will have the option of either searching for a book or browse books that are sorted through categories. Once the reader chooses one, they will be taken to a separate page that gives them details about the book and be able to read it with a click of a button.
   
 ## User Stories
-  User stories are available for via [Trello](https://trello.com/b/8JZGZAKY/paperback). Current status and progress of the project can be tracked through here as well.
+  User stories are available for via [Trello](https://trello.com/b/8JZGZAKY/paperback). Current status and progress of the project can be tracked through Trello as well.
 
 ##Wireframes
 
