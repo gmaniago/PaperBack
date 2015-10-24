@@ -31703,6 +31703,30 @@ module.exports = warning;
 module.exports = require('./lib/React');
 
 },{"./lib/React":29}],161:[function(require,module,exports){
+"use strict";
+
+},{}],162:[function(require,module,exports){
+"use strict";
+
+},{}],163:[function(require,module,exports){
+"use strict";
+
+},{}],164:[function(require,module,exports){
+"use strict";
+
+},{}],165:[function(require,module,exports){
+"use strict";
+
+},{}],166:[function(require,module,exports){
+"use strict";
+
+},{}],167:[function(require,module,exports){
+"use strict";
+
+},{}],168:[function(require,module,exports){
+"use strict";
+
+},{}],169:[function(require,module,exports){
 'use strict';
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -31712,7 +31736,18 @@ window.jQuery = $;
 
 Parse.initialize("bvFK2Tj2CFdcww2SHnZSUfaoTCY2SVGtford92Pq", "Rmj7rSWdCLkzmD6oV0ihcHLAN6g8taOGbRDn5n0c");
 
-},{"backbone":1,"jquery":4,"react":160,"react-dom":5}]},{},[161])
+var RegisterComponent = require('./components/RegisterComponent');
+var NavigationComponent = require('./components/NavigationComponent');
+var LoginComponent = require('./components/LoginComponent');
+var HomeComponent = require('./components/HomeComponent');
+var FooterComponent = require('./components/FooterComponent');
+var BookDetailsComponent = require('./components/BookDetailsComponent');
+var BookSelectionComponent = require('./components/BookSelectionComponent');
+var ConfirmationComponent = require('./components/ConfirmationComponent');
+
+var app = document.getElementById('app');
+
+},{"./components/BookDetailsComponent":161,"./components/BookSelectionComponent":162,"./components/ConfirmationComponent":163,"./components/FooterComponent":164,"./components/HomeComponent":165,"./components/LoginComponent":166,"./components/NavigationComponent":167,"./components/RegisterComponent":168,"backbone":1,"jquery":4,"react":160,"react-dom":5}]},{},[169])
 
 
 //# sourceMappingURL=bundle.js.map
