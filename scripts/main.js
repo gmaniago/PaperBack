@@ -5,48 +5,59 @@ var Backbone = require('backbone');
 window.$ = require('jquery');
 window.jQuery = $;
 
-Parse.initialize("bvFK2Tj2CFdcww2SHnZSUfaoTCY2SVGtford92Pq", "Rmj7rSWdCLkzmD6oV0ihcHLAN6g8taOGbRDn5n0c");
+Parse.initialize("lSTT4hQMyXQmxoNNI8EllvElXOiUUtt6GmNcmkph", "M8k7Z0e5PgXRqELdZ8siGFpkDUBl4fTh57nkUDbK");
 
-var RegisterComponent = require('./components/RegisterComponent');
-var NavigationComponent = require('./components/NavigationComponent');
-var LoginComponent = require('./components/LoginComponent');
-var HomeComponent = require('./components/HomeComponent');
-var FooterComponent = require('./components/FooterComponent');
-var BookDetailsComponent = require('./components/BookDetailsComponent');
-var BookSelectionComponent = require('./components/BookSelectionComponent');
-var ConfirmationComponent = require('./components/ConfirmationComponent');
+var NavigationComponent = require('./components/NavigationComponent.js');
+var PostComponent = require('./components/PostComponent.js');
+var PostFormComponent = require('./components/PostFormComponent.js');
+var LoginComponent = require('./components/LoginComponent.js');
+var RegisterComponent = require('./components/RegisterComponent.js');
+var PostListComponent = require('./components/PostListComponent.js');
 
 var app = document.getElementById('app');
 
 var Router = Backbone.Router.extend({
 	routes: {
-		'': 'home',
+		'': 'main',
+		'addPost': 'addPost',
 		'login': 'login',
 		'register': 'register',
-		'bookDetails': 'bookDetails',
-		'bookSelection': 'bookSelection',
-		'confirmation' : 'confirmation'
-	}
-	home: function() {
-		ReactDOM.render(<HomeComponent />, app);
+		'post/details/:id': 'lists'
+	},
+	main: function() {
+		ReactDOM.render(
+			<PostComponent router={r} />, 
+			app
+		);
+	},
+	addPost: function() {
+		if(!Parse.User.current()) {
+			this.navigate('login', {trigger: true});
+		}
+		else {
+			ReactDOM.render(<PostFormComponent router={r} />, app);
+		}
+
 	},
 	login: function() {
-		ReactDOM.render(<LoginComponent router={r} />, app);
+		ReactDOM.render(
+			<LoginComponent router={r} />, 
+			app
+		);
 	},
 	register: function() {
-		ReactDOM.render(<RegisterComponent router={r} />, app);
+		ReactDOM.render(
+			<RegisterComponent router={r} />, 
+			app
+		);
 	},
-	bookDetails: function() {
-		ReactDOM.render(<BookDetailsComponent router={r} />, app);
-	},
-	bookSelection: function() {
-		ReactDOM.render(<BookSelectionComponent router={r} />, app);
-	},
-	confirmation: function() {
-		ReactDOM.render(<ConfirmationComponent router={r} />, app);
-	},
-
-}),
+	lists: function(id) {
+		ReactDOM.render(
+			<PostListComponent router={r} postId={id} />,
+			app
+		);
+	}
+});
 
 var r = new Router();
 Backbone.history.start();
@@ -56,7 +67,3 @@ ReactDOM.render(
 	document.getElementById('nav')
 );
 
-ReactDOM.render(
-	<FooterComponent router={r} />,
-	document.getElementById('footer')
-);
