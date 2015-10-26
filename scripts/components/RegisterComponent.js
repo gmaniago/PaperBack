@@ -19,7 +19,15 @@ module.exports = React.createClass({
 					<input type="text" ref="username" placeholder="UserName" /><br />
 					<input type="email" ref="email" placeholder="Email Address" />
 					<br />
-					<input type="test" ref="password" placeholder="Password" />
+					<input type="text" ref="password" placeholder="Password" />
+					<br />
+					<input type="text" ref="streetAddress" placeholder="street address" />
+					<br />
+					<input type="text" ref="city" placeholder="city" />
+					<br />
+					<input type="number" ref="zipcode" placeholder="zip code" />
+					<br />
+					<input type="text" ref="state" placeholder="state" />
 					<br />
 					<button>Register</button>
 					{hasError}
@@ -35,7 +43,12 @@ module.exports = React.createClass({
 			{
 				username: this.refs.username.value,
 				password: this.refs.password.value,
-				email: this.refs.email.value
+				email: this.refs.email.value,
+				streetAddress: this.refs.streetAddress.value,
+				city: this.refs.city.value,
+				zipcode: this.refs.zipcode.value,
+				state: this.refs.state.value
+
 			},
 			{
 				success: (u) => {
@@ -51,6 +64,10 @@ module.exports = React.createClass({
 		this.refs.username.value = ''
 		this.refs.password.value = ''
 		this.refs.email.value = ''
+		this.refs.streetAddress.value = ''
+		this.refs.city.value = ''
+		this.refs.zipcode.value = ''
+		this.refs.state.value = ''
 	}
 
 

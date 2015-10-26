@@ -24,7 +24,7 @@ module.exports = React.createClass({
 		return (
 			<section>
 				<header>
-					<h1 id="logo">Blog Box</h1>
+					<h1 id="logo">PaperBack</h1>
 				</header>
 				<nav className="links">
 					{links}

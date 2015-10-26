@@ -8,36 +8,30 @@ window.jQuery = $;
 Parse.initialize("lSTT4hQMyXQmxoNNI8EllvElXOiUUtt6GmNcmkph", "M8k7Z0e5PgXRqELdZ8siGFpkDUBl4fTh57nkUDbK");
 
 var NavigationComponent = require('./components/NavigationComponent.js');
-var PostComponent = require('./components/PostComponent.js');
-var PostFormComponent = require('./components/PostFormComponent.js');
+// var BooksComponent = require('./components/BooksComponent.js');
+// var HomeComponent = require('./components/HomeComponent.js');
+// var BookDetailsComponent = require('.components/BookDetailsComponent.js');
 var LoginComponent = require('./components/LoginComponent.js');
 var RegisterComponent = require('./components/RegisterComponent.js');
-var PostListComponent = require('./components/PostListComponent.js');
 
 var app = document.getElementById('app');
 
 var Router = Backbone.Router.extend({
 	routes: {
-		'': 'main',
-		'addPost': 'addPost',
+		'': 'home',
 		'login': 'login',
 		'register': 'register',
-		'post/details/:id': 'lists'
 	},
-	main: function() {
+	home: function() {
 		ReactDOM.render(
-			<PostComponent router={r} />, 
+			<HomeComponent router={r} />, 
 			app
 		);
-	},
-	addPost: function() {
-		if(!Parse.User.current()) {
-			this.navigate('login', {trigger: true});
-		}
-		else {
-			ReactDOM.render(<PostFormComponent router={r} />, app);
-		}
-
+	// books: function() {
+	// 	ReactDOM.render(
+	// 		<BooksComponent router={r} />, 
+	// 		app
+	// 	);
 	},
 	login: function() {
 		ReactDOM.render(
@@ -51,12 +45,12 @@ var Router = Backbone.Router.extend({
 			app
 		);
 	},
-	lists: function(id) {
-		ReactDOM.render(
-			<PostListComponent router={r} postId={id} />,
-			app
-		);
-	}
+	// bookDetails: function(id) {
+	// 	ReactDOM.render(
+	// 		<BookDetailsComponent router={r} postId={id} />,
+	// 		app
+	// 	);
+	// }
 });
 
 var r = new Router();
