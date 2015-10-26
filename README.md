@@ -20,3 +20,9 @@ Using the app, the reader will be able to register and log in to their account. 
 ##Models
 
 ##API's, Plugins
+
+
+###About Me
+[LinkedIn](https://www.linkedin.com/profile/view?id=AAMAAApHvU0B4Dl21_YUjqW_8H6sp-bJZlzS2Dc&trk=hp-identity-name)
+
+[Blog](http://gmaniago.tumblr.com/)
