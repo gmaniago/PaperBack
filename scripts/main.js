@@ -5,11 +5,12 @@ var Backbone = require('backbone');
 window.$ = require('jquery');
 window.jQuery = $;
 
-Parse.initialize("lSTT4hQMyXQmxoNNI8EllvElXOiUUtt6GmNcmkph", "M8k7Z0e5PgXRqELdZ8siGFpkDUBl4fTh57nkUDbK");
+Parse.initialize("bvFK2Tj2CFdcww2SHnZSUfaoTCY2SVGtford92Pq", 
+	"Rmj7rSWdCLkzmD6oV0ihcHLAN6g8taOGbRDn5n0c");
 
 var NavigationComponent = require('./components/NavigationComponent.js');
 // var BooksComponent = require('./components/BooksComponent.js');
-// var HomeComponent = require('./components/HomeComponent.js');
+var HomeComponent = require('./components/HomeComponent.js');
 // var BookDetailsComponent = require('.components/BookDetailsComponent.js');
 var LoginComponent = require('./components/LoginComponent.js');
 var RegisterComponent = require('./components/RegisterComponent.js');

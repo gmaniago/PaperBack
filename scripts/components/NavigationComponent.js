@@ -18,7 +18,7 @@ module.exports = React.createClass({
 			links.push(this.createNavLink('register', 'Register'));
 		}
 		else {
-			links.push(this.createNavLink('addPost', 'Post'));
+			links.push(this.createNavLink('cart', 'Cart'));
 			links.push(<li><a href="#" onClick={this.logout}>Logout</a></li>);
 		}
 		return (
