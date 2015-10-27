@@ -11,8 +11,6 @@ module.exports = React.createClass({
 	render: function() {
 		var links = [];
 
-			links.push(this.createNavLink('', 'Home'));
-
 		if(!Parse.User.current()) {
 			links.push(this.createNavLink('login', 'Log In'));
 			links.push(this.createNavLink('register', 'Register'));
@@ -22,14 +20,11 @@ module.exports = React.createClass({
 			links.push(<li><a href="#" onClick={this.logout}>Logout</a></li>);
 		}
 		return (
-			<section>
-				<header>
-					<h1 id="logo">PaperBack</h1>
-				</header>
+			<section class="navbar">
 				<nav className="links">
 					{links}
 				</nav>
-				<div className="logoLine"></div>
+				<div className="logoLine"><a href="">PaperBack</a></div>
 			</section>
 
 			)
