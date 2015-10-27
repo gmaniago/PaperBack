@@ -20,11 +20,13 @@ module.exports = React.createClass({
 			links.push(<li><a href="#" onClick={this.logout}>Logout</a></li>);
 		}
 		return (
-			<section class="navbar">
+			<section className="navbar">
 				<nav className="links">
 					{links}
 				</nav>
-				<div className="logoLine"><a href="">PaperBack</a></div>
+				<div className="logoLine">
+					<a href="">PaperBack</a>
+				</div>
 			</section>
 
 			)

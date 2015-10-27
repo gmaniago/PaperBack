@@ -1,14 +1,120 @@
-@import 'normalize',
-		'bootstrap'
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
-body{
+
+$fontFamily: 'Ubuntu', sans-serif;
+$background-color: #F05C5B;
+$redBackgroundFontColor: #fff;
+
+body, h1{
 	margin: 0;
 	padding: 0;
+	font-family: $fontFamily;
 }
-.jumbotron {
-	background: url("../images/reading.jpg");
+
+a {
+	text-decoration: none;
+	font-family: $fontFamily;
+}
+
+.homeContent{
+	background: url("../images/foggy-read.png");
 	width: 100%;
-	height: 40em;
+	height: 35em;
 	background-repeat: no-repeat;
 	background-size: cover;
+	color: #fff;
+	h1 {
+		padding-top: 14%;
+		padding-left: 15%;
+		font-family: $fontFamily;
+	}
+	h3 {
+		padding-left: 15%;
+		font-family: $fontFamily;	
+	}
+	h4 {
+		padding-left: 15%;
+	}
 }
+.freeMonth {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.links {
+	li {
+		text-decoration: none;
+		list-style: none;
+		color: black; 
+		float: right;
+		padding-left: 4%;
+		padding-right: 4%;
+		font-size: 1.5em;
+		padding-top: 1.5em;
+		a:visited { text-decoration: none; color:black; }
+		a:hover { text-decoration: none; color:black; }
+		a:hover, a:active { text-decoration: none; color:black }
+	}
+}
+
+.logoLine {
+		padding-left: 2%;
+		font-size: 1.5em;
+		height: 4.5em;
+		padding-top: 1.5em;
+		a:visited { text-decoration: none; color:black; }
+		a:hover { text-decoration: none; color:black; }
+		a:hover, a:active { text-decoration: none; color:black }
+}
+
+div.registerBox {
+	background-color: $background-color;
+	color: $redBackgroundFontColor;
+	padding-left: 10%;
+	padding-bottom: 2em;
+	padding-top: 2em;
+	form {
+		width: 40%;
+		border-radius: 10px;
+		background: #AA3939;
+		padding-bottom: 2em;
+		padding-top: 1em;
+		input,button {
+			border: none;
+			height: 3em;
+			margin-top: 1em;
+			width: 90%;
+			margin-left: 5%;
+			border-radius: .5em;
+			outline-color: $background-color;
+			color: black;
+			background: #EDEFF1;
+		}
+		button {
+			background: $background-color;
+			border: none;
+			height: 3em;
+			margin-top: 1em;
+			width: 90%;
+			margin-left: 5%;
+			border-radius: .5em;
+			outline-color: $background-color;
+			color: black;
+		}
+		p {
+			color: black;
+		}
+	}
+
+}
+
+
+
+
+
+
+
