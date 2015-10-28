@@ -31704,6 +31704,66 @@ module.exports = require('./lib/React');
 
 },{"./lib/React":29}],161:[function(require,module,exports){
 'use strict';
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Backbone = require('backbone');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+		return React.createElement(
+			'section',
+			null,
+			'this is hard.'
+		);
+	}
+
+});
+
+},{"backbone":1,"react":160,"react-dom":5}],162:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Backbone = require('backbone');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+		return React.createElement(
+			'section',
+			null,
+			'hello'
+		);
+	}
+
+});
+
+},{"backbone":1,"react":160,"react-dom":5}],163:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Backbone = require('backbone');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ 'class': 'book' },
+			'hello'
+		);
+	}
+
+});
+
+},{"backbone":1,"react":160,"react-dom":5}],164:[function(require,module,exports){
+'use strict';
 var React = require('react');
 
 module.exports = React.createClass({
@@ -31743,7 +31803,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160}],162:[function(require,module,exports){
+},{"react":160}],165:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31808,7 +31868,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160,"react-dom":5}],163:[function(require,module,exports){
+},{"react":160,"react-dom":5}],166:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31829,10 +31889,12 @@ module.exports = React.createClass({
 		var links = [];
 
 		if (!Parse.User.current()) {
+			links.push(this.createNavLink('books', 'Browse'));
 			links.push(this.createNavLink('login', 'Log In'));
 			links.push(this.createNavLink('register', 'Register'));
 		} else {
 			links.push(this.createNavLink('cart', 'Cart'));
+			links.push(this.createNavLink('books', 'Browse'));
 			links.push(React.createElement(
 				'li',
 				null,
@@ -31894,7 +31956,7 @@ module.exports = React.createClass({
 
 });
 
-},{"backbone":1,"react":160,"react-dom":5}],164:[function(require,module,exports){
+},{"backbone":1,"react":160,"react-dom":5}],167:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31985,7 +32047,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160,"react-dom":5}],165:[function(require,module,exports){
+},{"react":160,"react-dom":5}],168:[function(require,module,exports){
 'use strict';
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -31996,11 +32058,12 @@ window.jQuery = $;
 Parse.initialize("bvFK2Tj2CFdcww2SHnZSUfaoTCY2SVGtford92Pq", "Rmj7rSWdCLkzmD6oV0ihcHLAN6g8taOGbRDn5n0c");
 
 var NavigationComponent = require('./components/NavigationComponent.js');
-// var BooksComponent = require('./components/BooksComponent.js');
+var BooksComponent = require('./components/BooksComponent.js');
 var HomeComponent = require('./components/HomeComponent.js');
-// var BookDetailsComponent = require('.components/BookDetailsComponent.js');
+var BookDetailsComponent = require('./components/BookDetailsComponent.js');
 var LoginComponent = require('./components/LoginComponent.js');
 var RegisterComponent = require('./components/RegisterComponent.js');
+var AddBooksComponent = require('./components/AddBookComponent.js');
 
 var app = document.getElementById('app');
 
@@ -32008,36 +32071,37 @@ var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'login': 'login',
-		'register': 'register'
+		'register': 'register',
+		'books': 'books',
+		'addBook': 'addBook',
+		'bookDetails': 'bookDetails'
 	},
 	home: function home() {
 		ReactDOM.render(React.createElement(HomeComponent, { router: r }), app);
-		// books: function() {
-		// 	ReactDOM.render(
-		// 		<BooksComponent router={r} />,
-		// 		app
-		// 	);
+	},
+	books: function books() {
+		ReactDOM.render(React.createElement(BooksComponent, { router: r }), app);
+	},
+	addBook: function addBook() {
+		ReactDOM.render(React.createElement(AddBooksComponent, { router: r }), app);
 	},
 	login: function login() {
 		ReactDOM.render(React.createElement(LoginComponent, { router: r }), app);
 	},
 	register: function register() {
 		ReactDOM.render(React.createElement(RegisterComponent, { router: r }), app);
+	},
+	bookDetails: function bookDetails(id) {
+		ReactDOM.render(React.createElement(BookDetailsComponent, { router: r, postId: id }), app);
 	}
 });
 
-// bookDetails: function(id) {
-// 	ReactDOM.render(
-// 		<BookDetailsComponent router={r} postId={id} />,
-// 		app
-// 	);
-// }
 var r = new Router();
 Backbone.history.start();
 
 ReactDOM.render(React.createElement(NavigationComponent, { router: r }), document.getElementById('nav'));
 
-},{"./components/HomeComponent.js":161,"./components/LoginComponent.js":162,"./components/NavigationComponent.js":163,"./components/RegisterComponent.js":164,"backbone":1,"jquery":4,"react":160,"react-dom":5}]},{},[165])
+},{"./components/AddBookComponent.js":161,"./components/BookDetailsComponent.js":162,"./components/BooksComponent.js":163,"./components/HomeComponent.js":164,"./components/LoginComponent.js":165,"./components/NavigationComponent.js":166,"./components/RegisterComponent.js":167,"backbone":1,"jquery":4,"react":160,"react-dom":5}]},{},[168])
 
 
 //# sourceMappingURL=bundle.js.map

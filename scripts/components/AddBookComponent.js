@@ -7,7 +7,7 @@ module.exports = React.createClass({
 	render: function(){
 		return (
 			<section>
-				hello
+				this is hard.
 			</section>
 		);
 	}

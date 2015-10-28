@@ -12,11 +12,13 @@ module.exports = React.createClass({
 		var links = [];
 
 		if(!Parse.User.current()) {
+			links.push(this.createNavLink('books', 'Browse'));
 			links.push(this.createNavLink('login', 'Log In'));
 			links.push(this.createNavLink('register', 'Register'));
 		}
 		else {
 			links.push(this.createNavLink('cart', 'Cart'));
+			links.push(this.createNavLink('books', 'Browse'));
 			links.push(<li><a href="#" onClick={this.logout}>Logout</a></li>);
 		}
 		return (

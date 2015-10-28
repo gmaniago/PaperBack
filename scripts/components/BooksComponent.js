@@ -6,7 +6,7 @@ module.exports = React.createClass({
 	render: function(){
 		return (
 			<div class="book">
-				<a href="#" class="img"><img src="<%= (volumeInfo.imageLinks.thumbnail) %>" /></a>
+				hello
 			</div>
 		);
 	}

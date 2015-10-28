@@ -9,11 +9,12 @@ Parse.initialize("bvFK2Tj2CFdcww2SHnZSUfaoTCY2SVGtford92Pq",
 	"Rmj7rSWdCLkzmD6oV0ihcHLAN6g8taOGbRDn5n0c");
 
 var NavigationComponent = require('./components/NavigationComponent.js');
-// var BooksComponent = require('./components/BooksComponent.js');
+var BooksComponent = require('./components/BooksComponent.js');
 var HomeComponent = require('./components/HomeComponent.js');
-// var BookDetailsComponent = require('.components/BookDetailsComponent.js');
+var BookDetailsComponent = require('./components/BookDetailsComponent.js');
 var LoginComponent = require('./components/LoginComponent.js');
 var RegisterComponent = require('./components/RegisterComponent.js');
+var AddBooksComponent = require('./components/AddBookComponent.js');
 
 var app = document.getElementById('app');
 
@@ -22,17 +23,27 @@ var Router = Backbone.Router.extend({
 		'': 'home',
 		'login': 'login',
 		'register': 'register',
+		'books': 'books',
+		'addBook': 'addBook',
+		'bookDetails': 'bookDetails'
 	},
 	home: function() {
 		ReactDOM.render(
 			<HomeComponent router={r} />, 
 			app
 		);
-	// books: function() {
-	// 	ReactDOM.render(
-	// 		<BooksComponent router={r} />, 
-	// 		app
-	// 	);
+	},
+	books: function() {
+		ReactDOM.render(
+			<BooksComponent router={r} />, 
+			app
+		);
+	},
+	addBook: function() {
+	ReactDOM.render(
+			<AddBooksComponent router={r} />, 
+			app
+		);
 	},
 	login: function() {
 		ReactDOM.render(
@@ -46,12 +57,12 @@ var Router = Backbone.Router.extend({
 			app
 		);
 	},
-	// bookDetails: function(id) {
-	// 	ReactDOM.render(
-	// 		<BookDetailsComponent router={r} postId={id} />,
-	// 		app
-	// 	);
-	// }
+	bookDetails: function(id) {
+		ReactDOM.render(
+			<BookDetailsComponent router={r} postId={id} />,
+			app
+		);
+	}
 });
 
 var r = new Router();
