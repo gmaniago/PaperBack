@@ -9,7 +9,7 @@ Parse.initialize("bvFK2Tj2CFdcww2SHnZSUfaoTCY2SVGtford92Pq",
 	"Rmj7rSWdCLkzmD6oV0ihcHLAN6g8taOGbRDn5n0c");
 
 var NavigationComponent = require('./components/NavigationComponent.js');
-var BooksComponent = require('./components/BooksComponent.js');
+var BooksComponent = require('./components/BrowseBooksComponent.js');
 var HomeComponent = require('./components/HomeComponent.js');
 var BookDetailsComponent = require('./components/BookDetailsComponent.js');
 var LoginComponent = require('./components/LoginComponent.js');
@@ -23,9 +23,9 @@ var Router = Backbone.Router.extend({
 		'': 'home',
 		'login': 'login',
 		'register': 'register',
-		'books': 'books',
+		'browse': 'browse',
 		'addBook': 'addBook',
-		'bookDetails': 'bookDetails'
+		'bookDetails/:id': 'bookDetails'
 	},
 	home: function() {
 		ReactDOM.render(
@@ -33,9 +33,9 @@ var Router = Backbone.Router.extend({
 			app
 		);
 	},
-	books: function() {
+	browse: function() {
 		ReactDOM.render(
-			<BooksComponent router={r} />, 
+			<BrowseBooksComponent router={r} />, 
 			app
 		);
 	},
@@ -59,7 +59,7 @@ var Router = Backbone.Router.extend({
 	},
 	bookDetails: function(id) {
 		ReactDOM.render(
-			<BookDetailsComponent router={r} postId={id} />,
+			<BookDetailsComponent router={r} bookId={id} />,
 			app
 		);
 	}

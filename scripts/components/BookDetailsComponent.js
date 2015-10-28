@@ -1,15 +1,44 @@
-
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Backbone = require('backbone');
+var BooksModel = require('../models/BooksModel.js');
 
 module.exports = React.createClass({
-	render: function(){
-		return (
-			<section>
-				hello
-			</section>
+	getInitialState: function() {
+		return {
+			book: null
+		}
+	},
+	componentWillMount: function() {
+		var query = new Parse.Query(BooksModel);
+		query
+		.get(this.props.bookId)
+		.then(
+			(book) => {
+				this.setState({book: book});
+			},
+			(err) => {
+				console.log(err);
+			}
 		);
+	},
+	render: function() {
+		var content = <div>Loading</div>;
+
+		if(this.state.book) {
+			content = (
+				<div className="bookDetails">
+					<h3 className="title">{this.state.book.get('title')}</h3>
+
+					<div className="description">{this.state.book.get('description')}</div>
+
+					<div className="image"><img src={this.state.book.get('image')}/></div>
+				</div>
+			)
+		}
+		return(
+			<div>
+				{content}
+			</div>
+		)
 	}
-	
 })
