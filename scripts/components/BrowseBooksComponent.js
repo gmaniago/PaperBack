@@ -25,12 +25,13 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		var browseContent = this.state.books.map(function(book) {
+			console.log(book);
 			return (
 				<div>
-					<a className="allBooks" href={'#book/details/' + book.id}>
+					<a className="allBooks" href={'#bookDetails/' + book.id}>
 						<div className="singleBook">
-							<div className="bookImage">{book.get('bookImage')}</div>
 							<h3 className="title">{book.get('title')}</h3>
+							<img className="mainImage" src={book.get('image')} />
 						</div>
 					</a>
 				</div>

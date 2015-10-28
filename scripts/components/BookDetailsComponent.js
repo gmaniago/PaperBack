@@ -28,10 +28,9 @@ module.exports = React.createClass({
 			content = (
 				<div className="bookDetails">
 					<h3 className="title">{this.state.book.get('title')}</h3>
-
 					<div className="description">{this.state.book.get('description')}</div>
-
 					<div className="image"><img src={this.state.book.get('image')}/></div>
+					<button>Add Book</button>
 				</div>
 			)
 		}

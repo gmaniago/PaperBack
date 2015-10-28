@@ -35,7 +35,7 @@ var Router = Backbone.Router.extend({
 	},
 	browse: function() {
 		ReactDOM.render(
-			<BrowseBooksComponent router={r} />, 
+			<BooksComponent router={r} />, 
 			app
 		);
 	},

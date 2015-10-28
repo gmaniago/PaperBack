@@ -35003,6 +35003,11 @@ module.exports = React.createClass({
 					'div',
 					{ className: 'image' },
 					React.createElement('img', { src: this.state.book.get('image') })
+				),
+				React.createElement(
+					'button',
+					null,
+					'Add Book'
 				)
 			);
 		}
@@ -35041,25 +35046,22 @@ module.exports = React.createClass({
 	},
 	render: function render() {
 		var browseContent = this.state.books.map(function (book) {
+			console.log(book);
 			return React.createElement(
 				'div',
 				null,
 				React.createElement(
 					'a',
-					{ className: 'allBooks', href: '#book/details/' + book.id },
+					{ className: 'allBooks', href: '#bookDetails/' + book.id },
 					React.createElement(
 						'div',
 						{ className: 'singleBook' },
 						React.createElement(
-							'div',
-							{ className: 'bookImage' },
-							book.get('bookImage')
-						),
-						React.createElement(
 							'h3',
 							{ className: 'title' },
 							book.get('title')
-						)
+						),
+						React.createElement('img', { className: 'mainImage', src: book.get('image') })
 					)
 				)
 			);
@@ -35397,7 +35399,7 @@ var Router = Backbone.Router.extend({
 		ReactDOM.render(React.createElement(HomeComponent, { router: r }), app);
 	},
 	browse: function browse() {
-		ReactDOM.render(React.createElement(BrowseBooksComponent, { router: r }), app);
+		ReactDOM.render(React.createElement(BooksComponent, { router: r }), app);
 	},
 	addBook: function addBook() {
 		ReactDOM.render(React.createElement(AddBooksComponent, { router: r }), app);
