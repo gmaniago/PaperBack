@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var PostModel = require('../models/BooksModel.js');
-var moment = require('moment')
+var BooksModel = require('../models/BooksModel.js');
+
 
 module.exports = React.createClass({
 
@@ -27,7 +27,7 @@ module.exports = React.createClass({
 		e.preventDefault();
 		var newBook = new BooksModel({
 			title: this.refs.title.value,
-			description: this.refs.body.value,
+			description: this.refs.description.value,
 			image: this.refs.image.value,
 			author: this.refs.author.value,
 		});

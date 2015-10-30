@@ -15,6 +15,7 @@ var BookDetailsComponent = require('./components/BookDetailsComponent.js');
 var LoginComponent = require('./components/LoginComponent.js');
 var RegisterComponent = require('./components/RegisterComponent.js');
 var AddBooksComponent = require('./components/AddBookComponent.js');
+var BorrowedListComponent = require('./components/BorrowedListComponent.js');
 
 var app = document.getElementById('app');
 
@@ -25,7 +26,8 @@ var Router = Backbone.Router.extend({
 		'register': 'register',
 		'browse': 'browse',
 		'addBook': 'addBook',
-		'bookDetails/:id': 'bookDetails'
+		'bookDetails/:id': 'bookDetails',
+		'borrowedList/:id': 'borrowedList'
 	},
 	home: function() {
 		ReactDOM.render(
@@ -54,6 +56,12 @@ var Router = Backbone.Router.extend({
 	register: function() {
 		ReactDOM.render(
 			<RegisterComponent router={r} />, 
+			app
+		);
+	},
+	borrowedList: function() {
+		ReactDOM.render(
+			<BorrowedListComponent router={r} />, 
 			app
 		);
 	},
