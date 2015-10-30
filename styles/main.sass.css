@@ -110,7 +110,6 @@ div.registerBox {
       width: 90%;
       margin-left: 5%;
       border-radius: .5em;
-      outline-color: #F05C5B;
-      color: black; }
+      outline-color: #F05C5B; }
     div.registerBox form p {
       color: black; }

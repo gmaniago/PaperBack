@@ -27,7 +27,7 @@ var Router = Backbone.Router.extend({
 		'browse': 'browse',
 		'addBook': 'addBook',
 		'bookDetails/:id': 'bookDetails',
-		'borrowedList/:id': 'borrowedList'
+		'cart': 'cart'
 	},
 	home: function() {
 		ReactDOM.render(
@@ -59,7 +59,7 @@ var Router = Backbone.Router.extend({
 			app
 		);
 	},
-	borrowedList: function() {
+	cart: function() {
 		ReactDOM.render(
 			<BorrowedListComponent router={r} />, 
 			app

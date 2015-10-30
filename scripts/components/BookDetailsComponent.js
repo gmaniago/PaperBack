@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var BooksModel = require('../models/BooksModel.js');
+var CartPlacementModel = require('../models/CartPlacementModel.js');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -42,7 +43,14 @@ module.exports = React.createClass({
 		)
 	},
 	clicked:function(){
-		
+		var placement = new CartPlacementModel();
+		placement.set('user', Parse.User.current());
+		placement.set('book', this.state.book);
+		placement.set('qty', 1)
+		placement.setACL(new Parse.ACL(Parse.User.current()));
+
+		placement.save({success: function() {}, error: function(err) { console.log(err) }});
+
 	}
 })
 

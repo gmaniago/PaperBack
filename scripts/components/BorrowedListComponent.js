@@ -4,65 +4,61 @@ var $ = require ('jquery');
 
 var UserModel = require('../models/UserModel');
 var BooksModel = require('../models/BooksModel');
-var CheckOutModel = require('../models/CheckOutModel');
+var CartPlacementModel = require('../models/CartPlacementModel.js');
 
-var query = new Parse.Query(UserModel);
-var query2 = new Parse.Query(BooksModel);
+var query = new Parse.Query(CartPlacementModel);
 
 module.exports = React.createClass({
 	getInitialState: function() {
 		return { 
-			user: null,
-			books: []
+			user: Parse.User.current(),
+			placements: {}
 		};
 	},
 	componentWillMount: function() {
-		query.equalTo('user', Parse.User.Current().id)
-		.first({
-			success: (result) => {
+		query.equalTo('user', Parse.User.current());
+        query.include("book");
+		query.find({
+			success: (original_placements) => {
+				var placements = {}
+				original_placements.map(function(placement) { 
+					console.log(placement.get('book'));
+					var book_id = placement.get('book').id;
+					console.log( placement.get('book').id)
+					if (placements[book_id]) {
+                       placements[book_id].push(placement)
+					} else {
+						placements[book_id] = [placement]
+					}
+				})
+				console.log(placements)
         		this.setState({
-					user: result
+					placements: placements
 				});
    			},
 		});
-		query2.equalTo('user', ''+this.props.books+'');
-		query2.find({
-				success: (result) => {
-	        		that.setState({
-						books: result
-					});	
-				}
-			});			
+	
 	},
 	render: function() {
-		var borrowedBooks = this.state.books
-		.map(function(book) {
-		return (
-
-			<div className="books">
-				<div><h2><a href={'#bookDetails/'+book.id}>{post.get('title')}</a></h2></div>	
-				<div>{book.get('description')}</div>
-				<div><img className="image" src={post.get('image')} /></div>
-			</div>
-			);
-		});
-
-		var content = <img className="loading" src="http://4vector.com/thumb_data/v4l-133092.jpg"/>
-		if(this.state.user) {
-			content = (
-					<div>
-						<div><h2>Hello {this.state.user.get('username')}. Here are your selections</h2></div>
-					</div>
-			)
+		var placements = [];
+		for (var book_id in this.state.placements) {
+          var book = this.state.placements[book_id][0].get('book')
+          var qty = this.state.placements[book_id].reduce(function(sum, cur) {
+          	return cur.get('qty') + sum
+          }, 0)
+          placements.push(	<div className="books">
+				<div><h2><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></h2></div>	
+				<div>{book.get('description')} {qty}</div>
+				<div><img className="image" src={book.get('image')} /></div>
+			</div>)
 		}
+
+	
 		return (
 			
 				<div>
 					<div >
-						{borrowedBooks}
-					</div>
-					<div>
-						{content}					
+						{placements}
 					</div>
 				</div>
 			

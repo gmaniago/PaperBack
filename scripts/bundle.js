@@ -31762,6 +31762,7 @@ module.exports = React.createClass({
 var React = require('react');
 var ReactDOM = require('react-dom');
 var BooksModel = require('../models/BooksModel.js');
+var CartPlacementModel = require('../models/CartPlacementModel.js');
 
 module.exports = React.createClass({
 	displayName: 'exports',
@@ -31830,10 +31831,20 @@ module.exports = React.createClass({
 			content
 		);
 	},
-	clicked: function clicked() {}
+	clicked: function clicked() {
+		var placement = new CartPlacementModel();
+		placement.set('user', Parse.User.current());
+		placement.set('book', this.state.book);
+		placement.set('qty', 1);
+		placement.setACL(new Parse.ACL(Parse.User.current()));
+
+		placement.save({ success: function success() {}, error: function error(err) {
+				console.log(err);
+			} });
+	}
 });
 
-},{"../models/BooksModel.js":170,"react":160,"react-dom":5}],163:[function(require,module,exports){
+},{"../models/BooksModel.js":170,"../models/CartPlacementModel.js":171,"react":160,"react-dom":5}],163:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31842,42 +31853,52 @@ var $ = require('jquery');
 
 var UserModel = require('../models/UserModel');
 var BooksModel = require('../models/BooksModel');
-var CheckOutModel = require('../models/CheckOutModel');
+var CartPlacementModel = require('../models/CartPlacementModel.js');
 
-var query = new Parse.Query(UserModel);
-var query2 = new Parse.Query(BooksModel);
+var query = new Parse.Query(CartPlacementModel);
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
 	getInitialState: function getInitialState() {
 		return {
-			user: null,
-			books: []
+			user: Parse.User.current(),
+			placements: {}
 		};
 	},
 	componentWillMount: function componentWillMount() {
 		var _this = this;
 
-		query.equalTo('user', Parse.User.Current().id).first({
-			success: function success(result) {
-				_this.setState({
-					user: result
+		query.equalTo('user', Parse.User.current());
+		query.include("book");
+		query.find({
+			success: function success(original_placements) {
+				var placements = {};
+				original_placements.map(function (placement) {
+					console.log(placement.get('book'));
+					var book_id = placement.get('book').id;
+					console.log(placement.get('book').id);
+					if (placements[book_id]) {
+						placements[book_id].push(placement);
+					} else {
+						placements[book_id] = [placement];
+					}
 				});
-			}
-		});
-		query2.equalTo('user', '' + this.props.books + '');
-		query2.find({
-			success: function success(result) {
-				that.setState({
-					books: result
+				console.log(placements);
+				_this.setState({
+					placements: placements
 				});
 			}
 		});
 	},
 	render: function render() {
-		var borrowedBooks = this.state.books.map(function (book) {
-			return React.createElement(
+		var placements = [];
+		for (var book_id in this.state.placements) {
+			var book = this.state.placements[book_id][0].get('book');
+			var qty = this.state.placements[book_id].reduce(function (sum, cur) {
+				return cur.get('qty') + sum;
+			}, 0);
+			placements.push(React.createElement(
 				'div',
 				{ className: 'books' },
 				React.createElement(
@@ -31889,60 +31910,39 @@ module.exports = React.createClass({
 						React.createElement(
 							'a',
 							{ href: '#bookDetails/' + book.id },
-							post.get('title')
+							book.get('title')
 						)
 					)
 				),
 				React.createElement(
 					'div',
 					null,
-					book.get('description')
+					book.get('description'),
+					' ',
+					qty
 				),
 				React.createElement(
 					'div',
 					null,
-					React.createElement('img', { className: 'image', src: post.get('image') })
+					React.createElement('img', { className: 'image', src: book.get('image') })
 				)
-			);
-		});
-
-		var content = React.createElement('img', { className: 'loading', src: 'http://4vector.com/thumb_data/v4l-133092.jpg' });
-		if (this.state.user) {
-			content = React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'div',
-					null,
-					React.createElement(
-						'h2',
-						null,
-						'Hello ',
-						this.state.user.get('username'),
-						'. Here are your selections'
-					)
-				)
-			);
+			));
 		}
+
 		return React.createElement(
 			'div',
 			null,
 			React.createElement(
 				'div',
 				null,
-				borrowedBooks
-			),
-			React.createElement(
-				'div',
-				null,
-				content
+				placements
 			)
 		);
 	}
 
 });
 
-},{"../models/BooksModel":170,"../models/CheckOutModel":171,"../models/UserModel":172,"jquery":4,"react":160,"react-dom":5}],164:[function(require,module,exports){
+},{"../models/BooksModel":170,"../models/CartPlacementModel.js":171,"../models/UserModel":172,"jquery":4,"react":160,"react-dom":5}],164:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32321,7 +32321,7 @@ var Router = Backbone.Router.extend({
 		'browse': 'browse',
 		'addBook': 'addBook',
 		'bookDetails/:id': 'bookDetails',
-		'borrowedList/:id': 'borrowedList'
+		'cart': 'cart'
 	},
 	home: function home() {
 		ReactDOM.render(React.createElement(HomeComponent, { router: r }), app);
@@ -32338,7 +32338,7 @@ var Router = Backbone.Router.extend({
 	register: function register() {
 		ReactDOM.render(React.createElement(RegisterComponent, { router: r }), app);
 	},
-	borrowedList: function borrowedList() {
+	cart: function cart() {
 		ReactDOM.render(React.createElement(BorrowedListComponent, { router: r }), app);
 	},
 	bookDetails: function bookDetails(id) {
@@ -32362,7 +32362,7 @@ module.exports = Parse.Object.extend({
 'use strict';
 
 module.exports = Parse.Object.extend({
-  className: 'checkout'
+  className: 'cart_placement'
 });
 
 },{}],172:[function(require,module,exports){
