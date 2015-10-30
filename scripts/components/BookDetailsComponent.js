@@ -28,9 +28,9 @@ module.exports = React.createClass({
 			content = (
 				<div className="bookDetails">
 					<h3 className="title">{this.state.book.get('title')}</h3>
-					<div className="description">{this.state.book.get('description')}</div>
+					<div className="description"><div className="image" ><img src={this.state.book.get('image')}height="500px" width="350px" border="0px"/></div><span>{this.state.book.get('description')}</span></div>
 					<div className="detailsAuthor">Author: {this.state.book.get('author')}</div>
-					<div className="image" ><img src={this.state.book.get('image')}height="500px" width="350px" border="0px"/></div>
+					
 					<button type="button" onClick ={this.clicked}>Add Book</button>
 				</div>
 			)
@@ -42,6 +42,20 @@ module.exports = React.createClass({
 		)
 	},
 	clicked:function(){
-		console.log("clicked")
+		
 	}
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+

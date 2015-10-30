@@ -66,6 +66,20 @@ a {
     text-decoration: none;
     color: black; }
 
+.image {
+  float: left;
+  margin-right: 20px; }
+
+.detailsAuthor {
+  padding-top: 20px; }
+
+.title {
+  font-size: 15px; }
+
+.singleBook {
+  width: 343px;
+  float: left; }
+
 div.registerBox {
   background-color: #F05C5B;
   color: #fff;

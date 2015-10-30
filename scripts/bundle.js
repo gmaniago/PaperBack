@@ -31800,18 +31800,22 @@ module.exports = React.createClass({
 				React.createElement(
 					'div',
 					{ className: 'description' },
-					this.state.book.get('description')
+					React.createElement(
+						'div',
+						{ className: 'image' },
+						React.createElement('img', { src: this.state.book.get('image'), height: '500px', width: '350px', border: '0px' })
+					),
+					React.createElement(
+						'span',
+						null,
+						this.state.book.get('description')
+					)
 				),
 				React.createElement(
 					'div',
 					{ className: 'detailsAuthor' },
 					'Author: ',
 					this.state.book.get('author')
-				),
-				React.createElement(
-					'div',
-					{ className: 'image' },
-					React.createElement('img', { src: this.state.book.get('image'), height: '500px', width: '350px', border: '0px' })
 				),
 				React.createElement(
 					'button',
@@ -31826,9 +31830,7 @@ module.exports = React.createClass({
 			content
 		);
 	},
-	clicked: function clicked() {
-		console.log("clicked");
-	}
+	clicked: function clicked() {}
 });
 
 },{"../models/BooksModel.js":170,"react":160,"react-dom":5}],163:[function(require,module,exports){
@@ -31971,17 +31973,21 @@ module.exports = React.createClass({
 				'div',
 				null,
 				React.createElement(
-					'a',
-					{ className: 'allBooks', href: '#bookDetails/' + book.id },
+					'div',
+					{ className: 'allBooks' },
 					React.createElement(
-						'div',
-						{ className: 'singleBook' },
+						'a',
+						{ href: '#bookDetails/' + book.id },
 						React.createElement(
-							'h3',
-							{ className: 'title' },
-							book.get('title')
-						),
-						React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' })
+							'div',
+							{ className: 'singleBook' },
+							React.createElement(
+								'h3',
+								{ className: 'title' },
+								book.get('title')
+							),
+							React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' })
+						)
 					)
 				)
 			);
@@ -32076,7 +32082,7 @@ module.exports = React.createClass({
 				),
 				React.createElement('input', { type: 'text', ref: 'username', placeholder: 'username' }),
 				React.createElement('br', null),
-				React.createElement('input', { type: 'test', ref: 'password', placeholder: 'password' }),
+				React.createElement('input', { type: 'password', ref: 'password', placeholder: 'password' }),
 				React.createElement('br', null),
 				React.createElement(
 					'button',
