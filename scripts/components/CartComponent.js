@@ -48,11 +48,10 @@ module.exports = React.createClass({
           }, 0)
           placements.push(	<div className="books">
 				<div><h2><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></h2></div>	
-				<div>{book.get('description')} {qty}</div>
+				<div>{book.get('author')} {qty}</div>
 				<div><img className="image" src={book.get('image')} /></div>
 			</div>)
 		}
-
 	
 		return (
 			

@@ -15,7 +15,7 @@ var BookDetailsComponent = require('./components/BookDetailsComponent.js');
 var LoginComponent = require('./components/LoginComponent.js');
 var RegisterComponent = require('./components/RegisterComponent.js');
 var AddBooksComponent = require('./components/AddBookComponent.js');
-var BorrowedListComponent = require('./components/BorrowedListComponent.js');
+var CartComponent = require('./components/CartComponent.js');
 
 var app = document.getElementById('app');
 
@@ -61,7 +61,7 @@ var Router = Backbone.Router.extend({
 	},
 	cart: function() {
 		ReactDOM.render(
-			<BorrowedListComponent router={r} />, 
+			<CartComponent router={r} />, 
 			app
 		);
 	},
