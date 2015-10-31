@@ -30,8 +30,7 @@ module.exports = React.createClass({
 				<div className="bookDetails">
 					<h3 className="title">{this.state.book.get('title')}</h3>
 					<div className="description"><div className="image" ><img src={this.state.book.get('image')}height="500px" width="350px" border="0px"/></div><span>{this.state.book.get('description')}</span></div>
-					<div className="detailsAuthor">Author: {this.state.book.get('author')}</div>
-					
+					<div className="detailsAuthor">Author: {this.state.book.get('author')}</div>					
 					<button type="button" onClick ={this.clicked}>Add Book</button>
 				</div>
 			)
@@ -48,7 +47,6 @@ module.exports = React.createClass({
 		placement.set('book', this.state.book);
 		placement.set('qty', 1)
 		placement.setACL(new Parse.ACL(Parse.User.current()));
-
 		placement.save({success: function() {}, error: function(err) { console.log(err) }});
 
 	}

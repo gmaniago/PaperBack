@@ -22,22 +22,18 @@ module.exports = React.createClass({
 			success: (original_placements) => {
 				var placements = {}
 				original_placements.map(function(placement) { 
-					console.log(placement.get('book'));
 					var book_id = placement.get('book').id;
-					console.log( placement.get('book').id)
 					if (placements[book_id]) {
                        placements[book_id].push(placement)
 					} else {
 						placements[book_id] = [placement]
 					}
 				})
-				console.log(placements)
         		this.setState({
 					placements: placements
 				});
    			},
-		});
-	
+		});	
 	},
 	render: function() {
 		var placements = [];
@@ -51,8 +47,7 @@ module.exports = React.createClass({
 				<div>{book.get('author')} {qty}</div>
 				<div><img className="image" src={book.get('image')} /></div>
 			</div>)
-		}
-	
+		}	
 		return (
 			
 				<div>

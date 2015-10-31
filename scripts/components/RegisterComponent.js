@@ -19,7 +19,7 @@ module.exports = React.createClass({
 					<input type="text" ref="username" placeholder="UserName" /><br />
 					<input type="email" ref="email" placeholder="Email Address" />
 					<br />
-					<input type="text" ref="password" placeholder="Password" />
+					<input type="password" ref="password" placeholder="Password" />
 					<br />
 					<input type="text" ref="streetAddress" placeholder="street address" />
 					<br />

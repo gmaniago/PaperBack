@@ -31837,7 +31837,6 @@ module.exports = React.createClass({
 		placement.set('book', this.state.book);
 		placement.set('qty', 1);
 		placement.setACL(new Parse.ACL(Parse.User.current()));
-
 		placement.save({ success: function success() {}, error: function error(err) {
 				console.log(err);
 			} });
@@ -31940,16 +31939,13 @@ module.exports = React.createClass({
 			success: function success(original_placements) {
 				var placements = {};
 				original_placements.map(function (placement) {
-					console.log(placement.get('book'));
 					var book_id = placement.get('book').id;
-					console.log(placement.get('book').id);
 					if (placements[book_id]) {
 						placements[book_id].push(placement);
 					} else {
 						placements[book_id] = [placement];
 					}
 				});
-				console.log(placements);
 				_this.setState({
 					placements: placements
 				});
@@ -31993,7 +31989,6 @@ module.exports = React.createClass({
 				)
 			));
 		}
-
 		return React.createElement(
 			'div',
 			null,
@@ -32237,7 +32232,7 @@ module.exports = React.createClass({
 				React.createElement('br', null),
 				React.createElement('input', { type: 'email', ref: 'email', placeholder: 'Email Address' }),
 				React.createElement('br', null),
-				React.createElement('input', { type: 'text', ref: 'password', placeholder: 'Password' }),
+				React.createElement('input', { type: 'password', ref: 'password', placeholder: 'Password' }),
 				React.createElement('br', null),
 				React.createElement('input', { type: 'text', ref: 'streetAddress', placeholder: 'street address' }),
 				React.createElement('br', null),
