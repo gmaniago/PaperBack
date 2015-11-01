@@ -32015,26 +32015,234 @@ module.exports = React.createClass({
 			{ className: 'homeContent' },
 			React.createElement(
 				'div',
-				{ className: 'hero' },
+				{ className: 'container-fluid' },
 				React.createElement(
-					'h1',
-					null,
-					'PaperBack'
-				),
-				React.createElement(
-					'h3',
-					null,
-					'With PaperBack you will be able to explore a vast library of books. ',
-					React.createElement('br', null),
-					'When you\'re done you can mail it back at no cost and choose another one to enjoy.'
-				),
-				React.createElement(
-					'h4',
-					null,
+					'div',
+					{ className: 'row' },
 					React.createElement(
-						'a',
-						{ href: '#register', className: 'freeMonth' },
-						'Start your free month.'
+						'div',
+						{ className: 'col-md-12' },
+						React.createElement(
+							'div',
+							{ className: 'jumbotron' },
+							React.createElement(
+								'h2',
+								null,
+								'PaperBack'
+							),
+							React.createElement(
+								'p',
+								null,
+								'With PaperBack you will be able to explore a vast library of books. When you are done you can mail it back at no cost and choose another one to enjoy.'
+							),
+							React.createElement(
+								'p',
+								null,
+								React.createElement(
+									'a',
+									{ className: 'btn btn-primary btn-large', href: '#register' },
+									'Start your free month'
+								)
+							)
+						)
+					)
+				)
+			),
+			React.createElement(
+				'section',
+				{ id: 'plans' },
+				React.createElement(
+					'div',
+					{ className: 'container' },
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement(
+							'div',
+							{ className: 'col-md-4 text-center' },
+							React.createElement(
+								'div',
+								{ className: 'panel panel-danger panel-pricing' },
+								React.createElement(
+									'div',
+									{ className: 'panel-heading' },
+									React.createElement('i', { className: 'fa fa-desktop' }),
+									React.createElement(
+										'h3',
+										null,
+										'Plan 1'
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'panel-body text-center' },
+									React.createElement(
+										'p',
+										null,
+										React.createElement(
+											'strong',
+											null,
+											'$100 / Month'
+										)
+									)
+								),
+								React.createElement(
+									'ul',
+									{ className: 'list-group text-center' },
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' Personal use'
+									),
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' Unlimited projects'
+									),
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' 27/7 support'
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'panel-footer' },
+									React.createElement(
+										'a',
+										{ className: 'btn btn-lg btn-block btn-danger', href: '#' },
+										'BUY NOW!'
+									)
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-md-4 text-center' },
+							React.createElement(
+								'div',
+								{ className: 'panel panel-warning panel-pricing' },
+								React.createElement(
+									'div',
+									{ className: 'panel-heading' },
+									React.createElement('i', { className: 'fa fa-desktop' }),
+									React.createElement(
+										'h3',
+										null,
+										'Plan 2'
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'panel-body text-center' },
+									React.createElement(
+										'p',
+										null,
+										React.createElement(
+											'strong',
+											null,
+											'$200 / Month'
+										)
+									)
+								),
+								React.createElement(
+									'ul',
+									{ className: 'list-group text-center' },
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' Personal use'
+									),
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' Unlimited projects'
+									),
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' 27/7 support'
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'panel-footer' },
+									React.createElement(
+										'a',
+										{ className: 'btn btn-lg btn-block btn-warning', href: '#' },
+										'BUY NOW!'
+									)
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-md-4 text-center' },
+							React.createElement(
+								'div',
+								{ className: 'panel panel-success panel-pricing' },
+								React.createElement(
+									'div',
+									{ className: 'panel-heading' },
+									React.createElement('i', { className: 'fa fa-desktop' }),
+									React.createElement(
+										'h3',
+										null,
+										'Plan 3'
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'panel-body text-center' },
+									React.createElement(
+										'p',
+										null,
+										React.createElement(
+											'strong',
+											null,
+											'$300 / Month'
+										)
+									)
+								),
+								React.createElement(
+									'ul',
+									{ className: 'list-group text-center' },
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' Personal use'
+									),
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' Unlimited projects'
+									),
+									React.createElement(
+										'li',
+										{ className: 'list-group-item' },
+										React.createElement('i', { className: 'fa fa-check' }),
+										' 27/7 support'
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'panel-footer' },
+									React.createElement(
+										'a',
+										{ className: 'btn btn-lg btn-block btn-success', href: '#' },
+										'BUY NOW!'
+									)
+								)
+							)
+						)
 					)
 				)
 			)
