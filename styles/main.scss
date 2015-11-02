@@ -1,12 +1,15 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 $fontFamily: 'Source Sans Pro', sans-serif;
-$background-color: #F5D76E;
+$background-color: #FF6A44;
 $redBackgroundFontColor: #fff;
 $fontColorWhite: #fff;
 $fontColorBlack: black;
+$buttonBackground: #F3D56D;
+$formBackground: #F3D56D;
+$greyFont: #919191;
 
-body, h1{
+body, h1,p{
 	margin: 0;
 	padding: 0;
 	font-family: $fontFamily;
@@ -23,22 +26,57 @@ a {
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: $fontColorBlack;
+	background: $background-color;
+	margin-bottom: 2em;
 	.hero {
 		background: $background-color;
-		padding-top: 10em;
-		padding-bottom: 10em;
+		padding-top: 7em;
+		padding-left: 3em;
 	}
-	.firstP{
-		margin-bottom: 0;
+	.btn {
+		background: $buttonBackground;
+		border:none;
+		color: $fontColorBlack;
 	}
 }
+.gifs {
+	padding-left: 7%;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	text-align: center;
+}
 
-.jumbotron {
-	background: $background-color;
+.appInfo {
+	text-align: center;
+	.greyFont {
+		color: $greyFont;
+	}
 }
 .freeMonth {
 	color: $fontColorBlack;
 	text-decoration: underline;
+}
+
+.firstMonth{
+	color: $greyFont;
+	text-align: center;
+	margin-top:1em;
+}
+.pBtn {
+	text-align:center;
+	margin-top:1em;
+	margin-bottom: 3em;
+	.startButton {
+		background: $buttonBackground;
+		width: 20em;
+		text-align:center;
+		height: 2.5em;
+	    cursor:pointer;
+		color: $fontColorWhite;
+		border: none;
+		padding-top: .5em;
+		font-size: 1.3em;
+	}
 }
 //Nav bar here
 .navbar {
@@ -91,46 +129,48 @@ padding-top:20px;
 	font-size: 15px;
 }
 
+.browseContainer {
+	margin: 3em;
+}
 .singleBook {
   width: 343px;
   float: left;
 }
 
 div.registerBox {
-	background-color: $background-color;
-	color: $redBackgroundFontColor;
-	padding-left: 10%;
+	color: $buttonBackground;
 	padding-bottom: 2em;
 	padding-top: 2em;
 	form {
-		width: 40%;
-		border-radius: 10px;
-		background: #AA3939;
+		background: $background-color;
 		padding-bottom: 2em;
 		padding-top: 1em;
-		input,button {
+		input,button,select {
 			border: none;
 			height: 3em;
 			margin-top: 1em;
 			width: 90%;
 			margin-left: 5%;
-			border-radius: .5em;
-			outline-color: $background-color;
 			color: black;
-			background: #EDEFF1;
+		}
+		.select {
+			border-radius: 0;
 		}
 		button {
-			background: $background-color;
+			background: $buttonBackground;
 			border: none;
 			height: 3em;
 			margin-top: 1em;
 			width: 90%;
 			margin-left: 5%;
-			border-radius: .5em;
-			outline-color: $background-color;
+			outline-color: $buttonBackground;
+			color: white;
 		}
 		p {
-			color: black;
+			color: white;
+		}
+		h2{
+			text-align: center;
 		}
 	}
 
@@ -138,6 +178,9 @@ div.registerBox {
 
 //panel pricing
 
+.pricing {
+	margin-top: 2em;
+}
 .panel-pricing {
   -moz-transition: all .3s ease;
   -o-transition: all .3s ease;

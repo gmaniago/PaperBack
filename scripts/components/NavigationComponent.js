@@ -23,9 +23,9 @@ module.exports = React.createClass({
 		}
 		return (
 			<section className="navbar">
-				<nav className="links">
+				<div className="links">
 					{links}
-				</nav>
+				</div>
 				<div className="logoLine">
 					<a href="">PaperBack</a>
 				</div>

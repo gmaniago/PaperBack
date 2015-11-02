@@ -1,5 +1,5 @@
 @import url(../node_modules/bootstrap/dist/css/bootstrap.css);
-body, h1 {
+body, h1, p {
   margin: 0;
   padding: 0;
   font-family: "Source Sans Pro", sans-serif; }
@@ -12,20 +12,52 @@ a {
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  color: black; }
+  color: black;
+  background: #FF6A44;
+  margin-bottom: 2em; }
   .homeContent .hero {
-    background: #F5D76E;
-    padding-top: 10em;
-    padding-bottom: 10em; }
-  .homeContent .firstP {
-    margin-bottom: 0; }
+    background: #FF6A44;
+    padding-top: 7em;
+    padding-left: 3em; }
+  .homeContent .btn {
+    background: #F3D56D;
+    border: none;
+    color: black; }
 
-.jumbotron {
-  background: #F5D76E; }
+.gifs {
+  padding-left: 7%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  text-align: center; }
+
+.appInfo {
+  text-align: center; }
+  .appInfo .greyFont {
+    color: #919191; }
 
 .freeMonth {
   color: black;
   text-decoration: underline; }
+
+.firstMonth {
+  color: #919191;
+  text-align: center;
+  margin-top: 1em; }
+
+.pBtn {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 3em; }
+  .pBtn .startButton {
+    background: #F3D56D;
+    width: 20em;
+    text-align: center;
+    height: 2.5em;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    padding-top: .5em;
+    font-size: 1.3em; }
 
 .navbar {
   margin-bottom: 0;
@@ -58,7 +90,7 @@ a {
   font-size: 1.5em;
   height: 2.5em;
   padding-top: .5em;
-  background-color: #F5D76E; }
+  background-color: #FF6A44; }
   .logoLine a:visited {
     text-decoration: none;
     color: #fff; }
@@ -79,43 +111,46 @@ a {
 .title {
   font-size: 15px; }
 
+.browseContainer {
+  margin: 3em; }
+
 .singleBook {
   width: 343px;
   float: left; }
 
 div.registerBox {
-  background-color: #F5D76E;
-  color: #fff;
-  padding-left: 10%;
+  color: #F3D56D;
   padding-bottom: 2em;
   padding-top: 2em; }
   div.registerBox form {
-    width: 40%;
-    border-radius: 10px;
-    background: #AA3939;
+    background: #FF6A44;
     padding-bottom: 2em;
     padding-top: 1em; }
-    div.registerBox form input, div.registerBox form button {
+    div.registerBox form input, div.registerBox form button, div.registerBox form select {
       border: none;
       height: 3em;
       margin-top: 1em;
       width: 90%;
       margin-left: 5%;
-      border-radius: .5em;
-      outline-color: #F5D76E;
-      color: black;
-      background: #EDEFF1; }
-    div.registerBox form button {
-      background: #F5D76E;
-      border: none;
-      height: 3em;
-      margin-top: 1em;
-      width: 90%;
-      margin-left: 5%;
-      border-radius: .5em;
-      outline-color: #F5D76E; }
-    div.registerBox form p {
       color: black; }
+    div.registerBox form .select {
+      border-radius: 0; }
+    div.registerBox form button {
+      background: #F3D56D;
+      border: none;
+      height: 3em;
+      margin-top: 1em;
+      width: 90%;
+      margin-left: 5%;
+      outline-color: #F3D56D;
+      color: white; }
+    div.registerBox form p {
+      color: white; }
+    div.registerBox form h2 {
+      text-align: center; }
+
+.pricing {
+  margin-top: 2em; }
 
 .panel-pricing {
   -moz-transition: all 0.3s ease;

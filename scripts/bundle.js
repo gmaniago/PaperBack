@@ -31872,7 +31872,7 @@ module.exports = React.createClass({
 		var browseContent = this.state.books.map(function (book) {
 			return React.createElement(
 				'div',
-				null,
+				{ className: 'browseContainer' },
 				React.createElement(
 					'div',
 					{ className: 'allBooks' },
@@ -31882,12 +31882,12 @@ module.exports = React.createClass({
 						React.createElement(
 							'div',
 							{ className: 'singleBook' },
+							React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' }),
 							React.createElement(
 								'h3',
 								{ className: 'title' },
 								book.get('title')
-							),
-							React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' })
+							)
 						)
 					)
 				)
@@ -32012,183 +32012,309 @@ module.exports = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'section',
-			{ className: 'homeContent' },
+			{ id: 'plans' },
 			React.createElement(
 				'div',
-				{ className: 'container-fluid' },
+				{ className: 'container-fluid homeContent' },
 				React.createElement(
 					'div',
-					{ className: 'row hero' },
+					{ className: 'row' },
 					React.createElement(
 						'div',
-						{ className: 'col-md-12' },
+						{ className: 'col-md-6 hero' },
 						React.createElement(
-							'div',
-							{ className: 'jumbotron' },
+							'h2',
+							null,
+							'PaperBack'
+						),
+						React.createElement(
+							'h3',
+							{ className: 'firstP' },
+							'With PaperBack you will be able to explore a vast library of books. When you are done you can simply mail it back at no cost and choose another one to enjoy.'
+						),
+						React.createElement(
+							'p',
+							null,
 							React.createElement(
-								'h2',
-								null,
-								'PaperBack'
-							),
-							React.createElement(
-								'p',
-								{ className: 'firstP' },
-								'With PaperBack you will be able to explore a vast library of books.'
-							),
-							React.createElement(
-								'p',
-								null,
-								'When you are done you can mail it back at no cost and choose another one to enjoy.'
-							),
-							React.createElement(
-								'p',
-								null,
-								React.createElement(
-									'a',
-									{ className: 'btn btn-primary btn-large', href: '#register' },
-									'Start your free month.'
-								)
+								'a',
+								{ className: 'btn btn-primary btn-large', href: '#register' },
+								'Start your free month.'
 							)
 						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-md-6' },
+						React.createElement('img', { src: '../images/handscopy.jpg', height: '500px', width: '500px' })
 					)
 				)
 			),
 			React.createElement(
-				'section',
-				{ id: 'plans' },
+				'div',
+				{ className: 'container' },
 				React.createElement(
 					'div',
-					{ className: 'container' },
+					{ className: 'container-fluid' },
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement('div', { className: 'col-md-1' }),
+						React.createElement(
+							'div',
+							{ className: 'col-md-10 appInfo' },
+							React.createElement(
+								'h1',
+								{ className: 'greyFont' },
+								'Easy as 1, 2, 3'
+							),
+							React.createElement(
+								'h1',
+								null,
+								'Browse, Choose, Ship for free.'
+							),
+							React.createElement(
+								'h3',
+								{ className: 'greyFont' },
+								'We do the work and with fast shipping you can get your book within days.'
+							),
+							React.createElement(
+								'h3',
+								{ className: 'greyFont' },
+								'Choose from a variety of selections. From Fantasy to Science Fiction.'
+							)
+						),
+						React.createElement('div', { className: 'col-md-1' })
+					)
+				),
+				React.createElement('hr', null),
+				React.createElement(
+					'div',
+					{ className: 'container-fluid' },
 					React.createElement(
 						'div',
 						{ className: 'row' },
 						React.createElement(
 							'div',
-							{ className: 'col-md-6 text-center' },
+							{ className: 'col-md-4 gifs' },
+							React.createElement('img', { src: '../images/teacher_animated.gif', height: '200px', width: '200px' }),
 							React.createElement(
-								'div',
-								{ className: 'panel panel-danger panel-pricing' },
-								React.createElement(
-									'div',
-									{ className: 'panel-heading' },
-									React.createElement('i', { className: 'fa fa-desktop' }),
-									React.createElement(
-										'h3',
-										null,
-										'Plan 1'
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'panel-body text-center' },
-									React.createElement(
-										'p',
-										null,
-										React.createElement(
-											'strong',
-											null,
-											'$10 / Month'
-										)
-									)
-								),
-								React.createElement(
-									'ul',
-									{ className: 'list-group text-center' },
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' 1st Month Free'
-									),
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' Borrow 2 up to books a month'
-									),
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' Customer Service Support'
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'panel-footer' },
-									React.createElement(
-										'a',
-										{ className: 'btn btn-lg btn-block btn-danger', href: '#register' },
-										'Choose this Plan!'
-									)
-								)
+								'h3',
+								null,
+								'PaperBack for Students'
+							),
+							React.createElement(
+								'h4',
+								null,
+								' Let us face it textbooks are not cheap. With PaperBack you can choose to borrow a book then return it when the semester ends.'
 							)
 						),
 						React.createElement(
 							'div',
-							{ className: 'col-md-6 text-center' },
+							{ className: 'col-md-4 gifs' },
+							React.createElement('img', { src: '../images/engineer_animated.gif', height: '250px', width: '250px' }),
 							React.createElement(
-								'div',
-								{ className: 'panel panel-warning panel-pricing' },
+								'h3',
+								null,
+								'PaperBack for Anyone'
+							),
+							React.createElement(
+								'h4',
+								null,
+								'This site is for anyone wanting to learn and explore the beauty of literature.'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-md-4 gifs' },
+							React.createElement('img', { src: '../images/designer_animated.gif', height: '200px', width: '200px' }),
+							React.createElement(
+								'h3',
+								null,
+								'PaperBack for the busy.'
+							),
+							React.createElement(
+								'h4',
+								null,
+								'Dont have time to go the bookstore. PaperBack is perfect for you.'
+							)
+						)
+					)
+				),
+				React.createElement('hr', null),
+				React.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement('div', { className: 'col-md-3' }),
+						React.createElement(
+							'div',
+							{ className: 'col-md-6 firstMonth' },
+							React.createElement(
+								'h1',
+								{ className: 'greyFont' },
+								'First month is on us.'
+							),
+							React.createElement(
+								'p',
+								{ className: 'pBtn' },
 								React.createElement(
-									'div',
-									{ className: 'panel-heading' },
-									React.createElement('i', { className: 'fa fa-desktop' }),
-									React.createElement(
-										'h3',
-										null,
-										'Plan 2'
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'panel-body text-center' },
-									React.createElement(
-										'p',
-										null,
-										React.createElement(
-											'strong',
-											null,
-											'$20 / Month'
-										)
-									)
-								),
-								React.createElement(
-									'ul',
-									{ className: 'list-group text-center' },
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' 1st Month Free'
-									),
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' Unlimited Books'
-									),
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' Customer Service Support'
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'panel-footer' },
-									React.createElement(
-										'a',
-										{ className: 'btn btn-lg btn-block btn-warning', href: '#register' },
-										'Choose this Plan!'
-									)
+									'a',
+									{ className: ' btn btn-primary btn-large startButton', href: '#register' },
+									'Start your free month.'
 								)
+							)
+						),
+						React.createElement('div', { className: 'col-md-3' })
+					)
+				),
+				React.createElement('hr', null),
+				React.createElement(
+					'div',
+					{ className: 'col-md-6 text-center pricing' },
+					React.createElement(
+						'div',
+						{ className: 'panel panel-danger panel-pricing' },
+						React.createElement(
+							'div',
+							{ className: 'panel-heading' },
+							React.createElement('i', { className: 'fa fa-desktop' }),
+							React.createElement(
+								'h3',
+								null,
+								'Plan 1'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'panel-body text-center' },
+							React.createElement(
+								'p',
+								null,
+								React.createElement(
+									'strong',
+									null,
+									'$10 / Month'
+								)
+							)
+						),
+						React.createElement(
+							'ul',
+							{ className: 'list-group text-center' },
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								' 1st Month Free'
+							),
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								' Borrow 2 up to books a month'
+							),
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								' Customer Service Support'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'panel-footer' },
+							React.createElement(
+								'a',
+								{ className: 'btn btn-lg btn-block btn-danger', href: '#register' },
+								'Choose this Plan!'
+							)
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'col-md-6 text-center pricing' },
+					React.createElement(
+						'div',
+						{ className: 'panel panel-warning panel-pricing' },
+						React.createElement(
+							'div',
+							{ className: 'panel-heading' },
+							React.createElement('i', { className: 'fa fa-desktop' }),
+							React.createElement(
+								'h3',
+								null,
+								'Plan 2'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'panel-body text-center' },
+							React.createElement(
+								'p',
+								null,
+								React.createElement(
+									'strong',
+									null,
+									'$20 / Month'
+								)
+							)
+						),
+						React.createElement(
+							'ul',
+							{ className: 'list-group text-center' },
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								' 1st Month Free'
+							),
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								' Unlimited Books'
+							),
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								' Customer Service Support'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'panel-footer' },
+							React.createElement(
+								'a',
+								{ className: 'btn btn-lg btn-block btn-warning', href: '#register' },
+								'Choose this Plan!'
 							)
 						)
 					)
 				)
-			)
+			),
+			React.createElement('hr', null),
+			React.createElement(
+				'div',
+				{ className: 'container-fluid' },
+				React.createElement(
+					'div',
+					{ className: 'row' },
+					React.createElement('div', { className: 'col-md-3' }),
+					React.createElement(
+						'div',
+						{ className: 'col-md-6 firstMonth' },
+						React.createElement(
+							'h1',
+							{ className: 'greyFont' },
+							'And Of Course. Cancel Anytime!'
+						)
+					)
+				)
+			),
+			React.createElement('hr', null)
 		);
 	}
 
@@ -32300,7 +32426,7 @@ module.exports = React.createClass({
 			'section',
 			{ className: 'navbar' },
 			React.createElement(
-				'nav',
+				'div',
 				{ className: 'links' },
 				links
 			),
@@ -32370,35 +32496,59 @@ module.exports = React.createClass({
 		}
 		return React.createElement(
 			'div',
-			{ className: 'registerBox' },
+			{ className: 'container-fluid' },
 			React.createElement(
-				'h2',
-				null,
-				'Register Here'
-			),
-			React.createElement(
-				'form',
-				{ className: 'form', onSubmit: this.onRegister },
-				React.createElement('input', { type: 'text', ref: 'username', placeholder: 'UserName' }),
-				React.createElement('br', null),
-				React.createElement('input', { type: 'email', ref: 'email', placeholder: 'Email Address' }),
-				React.createElement('br', null),
-				React.createElement('input', { type: 'password', ref: 'password', placeholder: 'Password' }),
-				React.createElement('br', null),
-				React.createElement('input', { type: 'text', ref: 'streetAddress', placeholder: 'street address' }),
-				React.createElement('br', null),
-				React.createElement('input', { type: 'text', ref: 'city', placeholder: 'city' }),
-				React.createElement('br', null),
-				React.createElement('input', { type: 'number', ref: 'zipcode', placeholder: 'zip code' }),
-				React.createElement('br', null),
-				React.createElement('input', { type: 'text', ref: 'state', placeholder: 'state' }),
-				React.createElement('br', null),
+				'div',
+				{ className: 'row' },
+				React.createElement('div', { className: 'col-md-3' }),
 				React.createElement(
-					'button',
-					null,
-					'Register'
+					'div',
+					{ className: 'col-md-6 registerBox' },
+					React.createElement(
+						'form',
+						{ className: 'form', onSubmit: this.onRegister },
+						React.createElement(
+							'h2',
+							null,
+							'Register Here'
+						),
+						React.createElement('input', { type: 'text', ref: 'username', placeholder: 'UserName' }),
+						React.createElement('br', null),
+						React.createElement('input', { type: 'email', ref: 'email', placeholder: 'Email Address' }),
+						React.createElement('br', null),
+						React.createElement('input', { type: 'password', ref: 'password', placeholder: 'Password' }),
+						React.createElement('br', null),
+						React.createElement('input', { type: 'text', ref: 'streetAddress', placeholder: 'street address' }),
+						React.createElement('br', null),
+						React.createElement('input', { type: 'text', ref: 'city', placeholder: 'city' }),
+						React.createElement('br', null),
+						React.createElement('input', { type: 'number', ref: 'zipcode', placeholder: 'zip code' }),
+						React.createElement('br', null),
+						React.createElement('input', { type: 'text', ref: 'state', placeholder: 'state' }),
+						React.createElement('br', null),
+						React.createElement(
+							'select',
+							{ className: 'select form-control' },
+							React.createElement(
+								'option',
+								{ value: 'First Choice' },
+								'Plan 1'
+							),
+							React.createElement(
+								'option',
+								{ value: 'Second Choice' },
+								'Plan 2'
+							)
+						),
+						React.createElement(
+							'button',
+							null,
+							'Register'
+						),
+						hasError
+					)
 				),
-				hasError
+				React.createElement('div', { className: 'col-md-3' })
 			)
 		);
 	},
