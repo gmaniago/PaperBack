@@ -32018,7 +32018,7 @@ module.exports = React.createClass({
 				{ className: 'container-fluid' },
 				React.createElement(
 					'div',
-					{ className: 'row' },
+					{ className: 'row hero' },
 					React.createElement(
 						'div',
 						{ className: 'col-md-12' },
@@ -32032,8 +32032,13 @@ module.exports = React.createClass({
 							),
 							React.createElement(
 								'p',
+								{ className: 'firstP' },
+								'With PaperBack you will be able to explore a vast library of books.'
+							),
+							React.createElement(
+								'p',
 								null,
-								'With PaperBack you will be able to explore a vast library of books. When you are done you can mail it back at no cost and choose another one to enjoy.'
+								'When you are done you can mail it back at no cost and choose another one to enjoy.'
 							),
 							React.createElement(
 								'p',
@@ -32041,7 +32046,7 @@ module.exports = React.createClass({
 								React.createElement(
 									'a',
 									{ className: 'btn btn-primary btn-large', href: '#register' },
-									'Start your free month'
+									'Start your free month.'
 								)
 							)
 						)
@@ -32059,7 +32064,7 @@ module.exports = React.createClass({
 						{ className: 'row' },
 						React.createElement(
 							'div',
-							{ className: 'col-md-4 text-center' },
+							{ className: 'col-md-6 text-center' },
 							React.createElement(
 								'div',
 								{ className: 'panel panel-danger panel-pricing' },
@@ -32082,7 +32087,7 @@ module.exports = React.createClass({
 										React.createElement(
 											'strong',
 											null,
-											'$100 / Month'
+											'$10 / Month'
 										)
 									)
 								),
@@ -32093,19 +32098,19 @@ module.exports = React.createClass({
 										'li',
 										{ className: 'list-group-item' },
 										React.createElement('i', { className: 'fa fa-check' }),
-										' Personal use'
+										' 1st Month Free'
 									),
 									React.createElement(
 										'li',
 										{ className: 'list-group-item' },
 										React.createElement('i', { className: 'fa fa-check' }),
-										' Unlimited projects'
+										' Borrow 2 up to books a month'
 									),
 									React.createElement(
 										'li',
 										{ className: 'list-group-item' },
 										React.createElement('i', { className: 'fa fa-check' }),
-										' 27/7 support'
+										' Customer Service Support'
 									)
 								),
 								React.createElement(
@@ -32113,15 +32118,15 @@ module.exports = React.createClass({
 									{ className: 'panel-footer' },
 									React.createElement(
 										'a',
-										{ className: 'btn btn-lg btn-block btn-danger', href: '#' },
-										'BUY NOW!'
+										{ className: 'btn btn-lg btn-block btn-danger', href: '#register' },
+										'Choose this Plan!'
 									)
 								)
 							)
 						),
 						React.createElement(
 							'div',
-							{ className: 'col-md-4 text-center' },
+							{ className: 'col-md-6 text-center' },
 							React.createElement(
 								'div',
 								{ className: 'panel panel-warning panel-pricing' },
@@ -32144,7 +32149,7 @@ module.exports = React.createClass({
 										React.createElement(
 											'strong',
 											null,
-											'$200 / Month'
+											'$20 / Month'
 										)
 									)
 								),
@@ -32155,19 +32160,19 @@ module.exports = React.createClass({
 										'li',
 										{ className: 'list-group-item' },
 										React.createElement('i', { className: 'fa fa-check' }),
-										' Personal use'
+										' 1st Month Free'
 									),
 									React.createElement(
 										'li',
 										{ className: 'list-group-item' },
 										React.createElement('i', { className: 'fa fa-check' }),
-										' Unlimited projects'
+										' Unlimited Books'
 									),
 									React.createElement(
 										'li',
 										{ className: 'list-group-item' },
 										React.createElement('i', { className: 'fa fa-check' }),
-										' 27/7 support'
+										' Customer Service Support'
 									)
 								),
 								React.createElement(
@@ -32175,70 +32180,8 @@ module.exports = React.createClass({
 									{ className: 'panel-footer' },
 									React.createElement(
 										'a',
-										{ className: 'btn btn-lg btn-block btn-warning', href: '#' },
-										'BUY NOW!'
-									)
-								)
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-md-4 text-center' },
-							React.createElement(
-								'div',
-								{ className: 'panel panel-success panel-pricing' },
-								React.createElement(
-									'div',
-									{ className: 'panel-heading' },
-									React.createElement('i', { className: 'fa fa-desktop' }),
-									React.createElement(
-										'h3',
-										null,
-										'Plan 3'
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'panel-body text-center' },
-									React.createElement(
-										'p',
-										null,
-										React.createElement(
-											'strong',
-											null,
-											'$300 / Month'
-										)
-									)
-								),
-								React.createElement(
-									'ul',
-									{ className: 'list-group text-center' },
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' Personal use'
-									),
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' Unlimited projects'
-									),
-									React.createElement(
-										'li',
-										{ className: 'list-group-item' },
-										React.createElement('i', { className: 'fa fa-check' }),
-										' 27/7 support'
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'panel-footer' },
-									React.createElement(
-										'a',
-										{ className: 'btn btn-lg btn-block btn-success', href: '#' },
-										'BUY NOW!'
+										{ className: 'btn btn-lg btn-block btn-warning', href: '#register' },
+										'Choose this Plan!'
 									)
 								)
 							)

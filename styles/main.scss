@@ -1,6 +1,4 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
-url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
-
 
 $fontFamily: 'Source Sans Pro', sans-serif;
 $background-color: #F5D76E;
@@ -21,24 +19,22 @@ a {
  
 // Home Page styling starts here
 .homeContent{
-	background: $background-color;
 	width: 100%;
-	height: 40em;
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: $fontColorBlack;
-	h1 {
-		padding-top: 14%;
-		padding-left: 15%;
-		font-family: $fontFamily;
+	.hero {
+		background: $background-color;
+		padding-top: 10em;
+		padding-bottom: 10em;
 	}
-	h3 {
-		padding-left: 15%;
-		font-family: $fontFamily;	
+	.firstP{
+		margin-bottom: 0;
 	}
-	h4 {
-		padding-left: 15%;
-	}
+}
+
+.jumbotron {
+	background: $background-color;
 }
 .freeMonth {
 	color: $fontColorBlack;
@@ -63,9 +59,9 @@ a {
 		a {
 			color:$fontColorWhite;
 		}
-		a:visited { text-decoration: none; color:black; }
-		a:hover { text-decoration: none; color:black; }
-		a:hover, a:active { text-decoration: none; color:black }
+		a:visited { text-decoration: none; color:$fontColorWhite; }
+		a:hover { text-decoration: none; color:$fontColorWhite; }
+		a:hover, a:active { text-decoration: none; color:$fontColorWhite }
 	}
 }
 
@@ -76,9 +72,9 @@ a {
 		height: 2.5em;
 		padding-top: .5em;
 		background-color: $background-color;
-		a:visited { text-decoration: none; color:black; }
-		a:hover { text-decoration: none; color:black; }
-		a:hover, a:active { text-decoration: none; color:black }
+		a:visited { text-decoration: none; color:$fontColorWhite; }
+		a:hover { text-decoration: none; color:$fontColorWhite; }
+		a:hover, a:active { text-decoration: none; color:$fontColorWhite;}
 }
 
 .image {
