@@ -42,11 +42,15 @@ module.exports = React.createClass({
           var qty = this.state.placements[book_id].reduce(function(sum, cur) {
           	return cur.get('qty') + sum
           }, 0)
-          placements.push(	<div className="books">
-				<div><h2><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></h2></div>	
-				<div>{book.get('author')} {qty}</div>
-				<div><img className="image" src={book.get('image')} /></div>
-			</div>)
+          placements.push(	
+
+          	<div className="checkoutCart">
+          		<div><img className="image" src={book.get('image')} height="120px" width="80px"/></div>
+				<div><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></div>	
+				<div>{book.get('author')}</div>
+				<div>Quantity:{qty}</div>
+			</div>
+			)
 		}	
 		return (
 			

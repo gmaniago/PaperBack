@@ -27,12 +27,25 @@ module.exports = React.createClass({
 
 		if(this.state.book) {
 			content = (
-				<div className="bookDetails">
-					<h3 className="title">{this.state.book.get('title')}</h3>
-					<div className="description"><div className="image" ><img src={this.state.book.get('image')}height="500px" width="350px" border="0px"/></div><span>{this.state.book.get('description')}</span></div>
-					<div className="detailsAuthor">Author: {this.state.book.get('author')}</div>					
-					<button type="button" onClick ={this.clicked}>Add Book</button>
+
+				<div className="container-fluid bookDetails">
+					<div className="row">
+						<div className="col-sm-1">
+						</div>
+						<div className="col-sm-5">
+						<img src={this.state.book.get('image')}height="500px" width="350px" border="0px"/>
+						</div>
+						<div className="col-sm-5 details">
+							<h2 className="title">{this.state.book.get('title')}</h2>
+							<p className="descript">{this.state.book.get('description')}</p>
+							<p className="detailsAuthor">Author: {this.state.book.get('author')}</p>
+							<a href="#browse"><button type="button" onClick ={this.clicked}>Add Book</button></a>
+						</div>
+						<div className="col-sm-1">
+						</div>
+					</div>
 				</div>
+
 			)
 		}
 		return(

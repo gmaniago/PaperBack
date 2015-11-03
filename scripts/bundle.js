@@ -31792,36 +31792,46 @@ module.exports = React.createClass({
 		if (this.state.book) {
 			content = React.createElement(
 				'div',
-				{ className: 'bookDetails' },
-				React.createElement(
-					'h3',
-					{ className: 'title' },
-					this.state.book.get('title')
-				),
+				{ className: 'container-fluid bookDetails' },
 				React.createElement(
 					'div',
-					{ className: 'description' },
+					{ className: 'row' },
+					React.createElement('div', { className: 'col-sm-1' }),
 					React.createElement(
 						'div',
-						{ className: 'image' },
+						{ className: 'col-sm-5' },
 						React.createElement('img', { src: this.state.book.get('image'), height: '500px', width: '350px', border: '0px' })
 					),
 					React.createElement(
-						'span',
-						null,
-						this.state.book.get('description')
-					)
-				),
-				React.createElement(
-					'div',
-					{ className: 'detailsAuthor' },
-					'Author: ',
-					this.state.book.get('author')
-				),
-				React.createElement(
-					'button',
-					{ type: 'button', onClick: this.clicked },
-					'Add Book'
+						'div',
+						{ className: 'col-sm-5 details' },
+						React.createElement(
+							'h2',
+							{ className: 'title' },
+							this.state.book.get('title')
+						),
+						React.createElement(
+							'p',
+							{ className: 'descript' },
+							this.state.book.get('description')
+						),
+						React.createElement(
+							'p',
+							{ className: 'detailsAuthor' },
+							'Author: ',
+							this.state.book.get('author')
+						),
+						React.createElement(
+							'a',
+							{ href: '#browse' },
+							React.createElement(
+								'button',
+								{ type: 'button', onClick: this.clicked },
+								'Add Book'
+							)
+						)
+					),
+					React.createElement('div', { className: 'col-sm-1' })
 				)
 			);
 		}
@@ -31872,22 +31882,18 @@ module.exports = React.createClass({
 		var browseContent = this.state.books.map(function (book) {
 			return React.createElement(
 				'div',
-				{ className: 'browseContainer' },
+				{ className: 'allBooks' },
 				React.createElement(
-					'div',
-					{ className: 'allBooks' },
+					'a',
+					{ href: '#bookDetails/' + book.id },
 					React.createElement(
-						'a',
-						{ href: '#bookDetails/' + book.id },
+						'div',
+						{ className: 'singleBook' },
+						React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' }),
 						React.createElement(
-							'div',
-							{ className: 'singleBook' },
-							React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' }),
-							React.createElement(
-								'h3',
-								{ className: 'title' },
-								book.get('title')
-							)
+							'h3',
+							{ className: 'title' },
+							book.get('title')
 						)
 					)
 				)
@@ -31898,8 +31904,8 @@ module.exports = React.createClass({
 			null,
 			React.createElement(
 				'h3',
-				null,
-				'Recent Books'
+				{ id: 'browseBooks' },
+				'Browse Books'
 			),
 			React.createElement('br', null),
 			browseContent
@@ -31961,31 +31967,31 @@ module.exports = React.createClass({
 			}, 0);
 			placements.push(React.createElement(
 				'div',
-				{ className: 'books' },
+				{ className: 'checkoutCart' },
+				React.createElement(
+					'div',
+					null,
+					React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' })
+				),
 				React.createElement(
 					'div',
 					null,
 					React.createElement(
-						'h2',
-						null,
-						React.createElement(
-							'a',
-							{ href: '#bookDetails/' + book.id },
-							book.get('title')
-						)
+						'a',
+						{ href: '#bookDetails/' + book.id },
+						book.get('title')
 					)
 				),
 				React.createElement(
 					'div',
 					null,
-					book.get('author'),
-					' ',
-					qty
+					book.get('author')
 				),
 				React.createElement(
 					'div',
 					null,
-					React.createElement('img', { className: 'image', src: book.get('image') })
+					'Quantity:',
+					qty
 				)
 			));
 		}

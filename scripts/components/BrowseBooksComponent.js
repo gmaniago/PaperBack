@@ -26,20 +26,17 @@ module.exports = React.createClass({
 	render: function() {
 		var browseContent = this.state.books.map(function(book) {
 			return (
-				<div className= "browseContainer">
 					<div className="allBooks"><a href={'#bookDetails/' + book.id}>
 						<div className="singleBook">
 							<img className="mainImage" src={book.get('image')}height="300px" width="200px" border="0px"/>
 							<h3 className="title">{book.get('title')}</h3>
-						</div>
-					</a></div>
-				</div>
-
+						</div></a>
+					</div>
 			)
 		})
 		return (
 			<div>
-				<h3>Recent Books</h3><br/>
+				<h3 id="browseBooks">Browse Books</h3><br/>
 				{browseContent}
 			</div>
 			)
@@ -47,4 +44,5 @@ module.exports = React.createClass({
 
 
 })
+
 

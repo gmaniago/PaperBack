@@ -105,18 +105,18 @@ a {
   float: left;
   margin-right: 20px; }
 
+#browseBooks {
+  text-align: center; }
+
 .detailsAuthor {
   padding-top: 20px; }
 
 .title {
   font-size: 15px; }
 
-.browseContainer {
-  margin: 3em; }
-
 .singleBook {
-  width: 343px;
-  float: left; }
+  float: left;
+  padding-left: 2em; }
 
 div.registerBox {
   color: #F3D56D;
@@ -185,3 +185,28 @@ div.registerBox {
   color: #777777;
   padding: 20px;
   margin: 0px; }
+
+.bookDetails {
+  margin-top: 5em; }
+  .bookDetails .title {
+    font-size: 2em; }
+  .bookDetails button {
+    background: #F3D56D;
+    border: none;
+    height: 3em;
+    margin-top: 1em;
+    width: 10em;
+    outline-color: #F3D56D;
+    color: white;
+    border-radius: .5em; }
+  .bookDetails img {
+    margin-left: 5%;
+    margin-right: 5%; }
+  .bookDetails .descript {
+    margin-right: 5%;
+    font-size: 1.3em; }
+  .bookDetails .detailsAuthor {
+    font-size: 1.3em; }
+
+.checkoutCart {
+  display: block; }
