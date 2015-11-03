@@ -32,6 +32,7 @@ module.exports = React.createClass({
         		this.setState({
 					placements: placements
 				});
+				console.log(placements);
    			},
 		});	
 	},
@@ -43,12 +44,14 @@ module.exports = React.createClass({
           	return cur.get('qty') + sum
           }, 0)
           placements.push(	
-	          	<table className="checkoutCart">
-	          		<td><img className="image" src={book.get('image')} height="120px" width="80px"/></td>
-					<td><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></td>	
-					<td>Quantity:{qty}</td>
-					<td><button>Remove</button><br/><br/><button>Edit</button></td>
-				</table>
+	          	<div className="checkoutCart">
+					<ul>
+						<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
+						<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
+						<li>Quantity:{qty}</li>
+						<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button><button>Edit</button></li>
+					</ul>
+				</div>
 			)
 		}	
 		return (
@@ -57,10 +60,26 @@ module.exports = React.createClass({
 					<div >
 						{placements}
 					</div>
-					<a href="#confirmation"><button>Ship my Books</button></a>
+					<a href="#confirmation"><button id="shipBtn">Ship my Books</button></a>
 				</div>
 			
 		);
+	},
+	removeBook: function(book) {
+		
+		query.equalTo('user', Parse.User.current());
+		query.equalTo('book', book).
+		limit(1).
+		find({
+			success: (books) => {
+				var deleteBook = books[0];
+
+				deleteBook.destroy();
+			},
+			error: (error) => {
+				console.log(error);
+			}
+		});
 	}
 
 });

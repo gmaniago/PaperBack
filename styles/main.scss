@@ -135,8 +135,41 @@ padding-top:20px;
 
 .singleBook {
 	float: left;
-	padding-left: 2em;
+	padding-left: 5%;
+	width: 337px;
+	.title {
+		text-align:left;
+		margin-bottom: 2em;
 	}
+}
+
+@media(max-width:768px) {
+	.bookList {
+		width: 337px;
+	}
+}
+
+@media(min-width:600px) {
+	.bookList {
+		width: 674px;
+	}
+}
+
+@media(min-width:1024px) {
+	.bookList {
+		width: 1011px;
+	}
+}
+ 
+.bookList {
+	a {
+		display:block;
+	}
+	max-width: 1011px; 
+
+	margin-left: auto;
+	margin-right: auto;
+}
 
 div.registerBox {
 	color: $buttonBackground;
@@ -251,27 +284,13 @@ div.registerBox {
 
 // cart details start here
 
-.checkoutContainer {
-	margin-top: 3em;
-	.checkoutCart {
-		height: 10em;
-		border: 2px solid black;
-		margin: 0 auto;
-		.image {
-			display: block;
-			margin: 0 auto;
-		}
-		td {
-			border: 1px solid black;
-			width: 10em;
-			text-align: center;	
-		}
-		button {
-			width: 5em;
-			margin: 0 auto;
-		}
+.checkoutCart {
+	display: inline-block;
+	li {
+		text-decoration: none;
+		list-style: none;
+		text-align: center;
 	}
-
 }
 
 

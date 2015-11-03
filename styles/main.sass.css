@@ -116,7 +116,30 @@ a {
 
 .singleBook {
   float: left;
-  padding-left: 2em; }
+  padding-left: 5%;
+  width: 337px; }
+  .singleBook .title {
+    text-align: left;
+    margin-bottom: 2em; }
+
+@media (max-width: 768px) {
+  .bookList {
+    width: 337px; } }
+
+@media (min-width: 600px) {
+  .bookList {
+    width: 674px; } }
+
+@media (min-width: 1024px) {
+  .bookList {
+    width: 1011px; } }
+
+.bookList {
+  max-width: 1011px;
+  margin-left: auto;
+  margin-right: auto; }
+  .bookList a {
+    display: block; }
 
 div.registerBox {
   color: #F3D56D;
@@ -208,19 +231,9 @@ div.registerBox {
   .bookDetails .detailsAuthor {
     font-size: 1.3em; }
 
-.checkoutContainer {
-  margin-top: 3em; }
-  .checkoutContainer .checkoutCart {
-    height: 10em;
-    border: 2px solid black;
-    margin: 0 auto; }
-    .checkoutContainer .checkoutCart .image {
-      display: block;
-      margin: 0 auto; }
-    .checkoutContainer .checkoutCart td {
-      border: 1px solid black;
-      width: 10em;
-      text-align: center; }
-    .checkoutContainer .checkoutCart button {
-      width: 5em;
-      margin: 0 auto; }
+.checkoutCart {
+  display: inline-block; }
+  .checkoutCart li {
+    text-decoration: none;
+    list-style: none;
+    text-align: center; }

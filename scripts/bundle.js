@@ -31756,7 +31756,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/BooksModel.js":171,"react":160,"react-dom":5}],162:[function(require,module,exports){
+},{"../models/BooksModel.js":172,"react":160,"react-dom":5}],162:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31853,23 +31853,33 @@ module.exports = React.createClass({
 	}
 });
 
-},{"../models/BooksModel.js":171,"../models/CartPlacementModel.js":172,"react":160,"react-dom":5}],163:[function(require,module,exports){
+},{"../models/BooksModel.js":172,"../models/CartPlacementModel.js":173,"react":160,"react-dom":5}],163:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
 var ReactDOM = require('react-dom');
 var BooksModel = require('../models/BooksModel.js');
+var FilterComponent = require('./FilterComponent');
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
 	getInitialState: function getInitialState() {
 		return {
-			books: []
+			books: [],
+			filterText: ''
 		};
 	},
 	componentWillMount: function componentWillMount() {
 		var _this = this;
+
+		/*Parse.Cloud.beforeSave("books", function(request, response) {
+  	request.object_set(
+  		"title_lowercase",
+  		request.object.get("title").toLowerCase()
+  	);
+  		response.success();
+  });*/
 
 		var query = new Parse.Query(BooksModel);
 		query.descending('createdAt').find().then(function (books) {
@@ -31878,11 +31888,32 @@ module.exports = React.createClass({
 			console.log(err);
 		});
 	},
+	stateUpdate: function stateUpdate(value) {
+		var _this2 = this;
+
+		this.setState({ filterText: value });
+
+		var query = new Parse.Query(BooksModel);
+		query.descending('createdAt').contains("title", value).find().then(function (books) {
+			//this.setState({books: books});
+
+			query = new Parse.Query(BooksModel);
+			query.descending('createdAt').contains('author', value).find().then(function (authorBooks) {
+				books = books.concat(authorBooks);
+				_this2.setState({ books: books });
+			}, function (err) {
+				console.log(err);
+				_this2.setState({ books: books });
+			});
+		}, function (err) {
+			console.log(err);
+		});
+	},
 	render: function render() {
 		var browseContent = this.state.books.map(function (book) {
 			return React.createElement(
 				'div',
-				{ className: 'allBooks' },
+				{ className: 'allBooks ' },
 				React.createElement(
 					'a',
 					{ href: '#bookDetails/' + book.id },
@@ -31903,18 +31934,27 @@ module.exports = React.createClass({
 			'div',
 			null,
 			React.createElement(
+				'div',
+				{ className: 'filter-container' },
+				React.createElement(FilterComponent, { filterVal: this.state.filterText, filterUpdate: this.stateUpdate })
+			),
+			React.createElement(
 				'h3',
 				{ id: 'browseBooks' },
 				'Browse Books'
 			),
 			React.createElement('br', null),
-			browseContent
+			React.createElement(
+				'div',
+				{ className: 'bookList row' },
+				browseContent
+			)
 		);
 	}
 
 });
 
-},{"../models/BooksModel.js":171,"react":160,"react-dom":5}],164:[function(require,module,exports){
+},{"../models/BooksModel.js":172,"./FilterComponent":166,"react":160,"react-dom":5}],164:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31955,6 +31995,7 @@ module.exports = React.createClass({
 				_this.setState({
 					placements: placements
 				});
+				console.log(placements);
 			}
 		});
 	},
@@ -31966,42 +32007,44 @@ module.exports = React.createClass({
 				return cur.get('qty') + sum;
 			}, 0);
 			placements.push(React.createElement(
-				'table',
+				'div',
 				{ className: 'checkoutCart' },
 				React.createElement(
-					'td',
-					null,
-					React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' })
-				),
-				React.createElement(
-					'td',
+					'ul',
 					null,
 					React.createElement(
-						'a',
-						{ href: '#bookDetails/' + book.id },
-						book.get('title')
-					)
-				),
-				React.createElement(
-					'td',
-					null,
-					'Quantity:',
-					qty
-				),
-				React.createElement(
-					'td',
-					null,
-					React.createElement(
-						'button',
+						'li',
 						null,
-						'Remove'
+						React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' })
 					),
-					React.createElement('br', null),
-					React.createElement('br', null),
 					React.createElement(
-						'button',
+						'li',
 						null,
-						'Edit'
+						React.createElement(
+							'a',
+							{ href: '#bookDetails/' + book.id },
+							book.get('title')
+						)
+					),
+					React.createElement(
+						'li',
+						null,
+						'Quantity:',
+						qty
+					),
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'button',
+							{ onClick: this.removeBook.bind(this, book) },
+							'Remove'
+						),
+						React.createElement(
+							'button',
+							null,
+							'Edit'
+						)
 					)
 				)
 			));
@@ -32019,16 +32062,30 @@ module.exports = React.createClass({
 				{ href: '#confirmation' },
 				React.createElement(
 					'button',
-					null,
+					{ id: 'shipBtn' },
 					'Ship my Books'
 				)
 			)
 		);
+	},
+	removeBook: function removeBook(book) {
+
+		query.equalTo('user', Parse.User.current());
+		query.equalTo('book', book).limit(1).find({
+			success: function success(books) {
+				var deleteBook = books[0];
+
+				deleteBook.destroy();
+			},
+			error: function error(_error) {
+				console.log(_error);
+			}
+		});
 	}
 
 });
 
-},{"../models/BooksModel":171,"../models/CartPlacementModel.js":172,"../models/UserModel":173,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
+},{"../models/BooksModel":172,"../models/CartPlacementModel.js":173,"../models/UserModel":174,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32052,6 +32109,41 @@ module.exports = React.createClass({
 });
 
 },{"react":160,"react-dom":5}],166:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var FilterComponent = require('./FilterComponent');
+var BooksModel = require('../models/BooksModel');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+
+		return React.createElement(
+			'div',
+			{ className: 'filter-container' },
+			React.createElement(
+				'form',
+				null,
+				React.createElement('input', { type: 'text',
+					id: 'filter-input',
+					ref: 'filterInput',
+					placeholder: 'enter a book name',
+					value: this.props.filterVal,
+					onChange: this.filterTrigger })
+			)
+		);
+	},
+	filterTrigger: function filterTrigger(e) {
+		e.preventDefault();
+		// run the stateUpdate method from the FilterBox component using the current value of the <input> field
+		this.props.filterUpdate(this.refs.filterInput.value);
+	}
+});
+
+},{"../models/BooksModel":172,"./FilterComponent":166,"react":160,"react-dom":5}],167:[function(require,module,exports){
 'use strict';
 var React = require('react');
 
@@ -32369,7 +32461,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160}],167:[function(require,module,exports){
+},{"react":160}],168:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32434,7 +32526,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160,"react-dom":5}],168:[function(require,module,exports){
+},{"react":160,"react-dom":5}],169:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32522,7 +32614,7 @@ module.exports = React.createClass({
 
 });
 
-},{"backbone":1,"react":160,"react-dom":5}],169:[function(require,module,exports){
+},{"backbone":1,"react":160,"react-dom":5}],170:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32637,7 +32729,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160,"react-dom":5}],170:[function(require,module,exports){
+},{"react":160,"react-dom":5}],171:[function(require,module,exports){
 'use strict';
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -32701,28 +32793,28 @@ Backbone.history.start();
 
 ReactDOM.render(React.createElement(NavigationComponent, { router: r }), document.getElementById('nav'));
 
-},{"./components/AddBookComponent.js":161,"./components/BookDetailsComponent.js":162,"./components/BrowseBooksComponent.js":163,"./components/CartComponent.js":164,"./components/ConfirmationComponent.js":165,"./components/HomeComponent.js":166,"./components/LoginComponent.js":167,"./components/NavigationComponent.js":168,"./components/RegisterComponent.js":169,"backbone":1,"jquery":4,"react":160,"react-dom":5}],171:[function(require,module,exports){
+},{"./components/AddBookComponent.js":161,"./components/BookDetailsComponent.js":162,"./components/BrowseBooksComponent.js":163,"./components/CartComponent.js":164,"./components/ConfirmationComponent.js":165,"./components/HomeComponent.js":167,"./components/LoginComponent.js":168,"./components/NavigationComponent.js":169,"./components/RegisterComponent.js":170,"backbone":1,"jquery":4,"react":160,"react-dom":5}],172:[function(require,module,exports){
 'use strict';
 
 module.exports = Parse.Object.extend({
   className: 'books'
 });
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 'use strict';
 
 module.exports = Parse.Object.extend({
   className: 'cart_placement'
 });
 
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 'use strict';
 
 module.exports = Parse.Object.extend({
   className: 'User'
 });
 
-},{}]},{},[170])
+},{}]},{},[171])
 
 
 //# sourceMappingURL=bundle.js.map
