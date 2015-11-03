@@ -208,5 +208,19 @@ div.registerBox {
   .bookDetails .detailsAuthor {
     font-size: 1.3em; }
 
-.checkoutCart {
-  display: block; }
+.checkoutContainer {
+  margin-top: 3em; }
+  .checkoutContainer .checkoutCart {
+    height: 10em;
+    border: 2px solid black;
+    margin: 0 auto; }
+    .checkoutContainer .checkoutCart .image {
+      display: block;
+      margin: 0 auto; }
+    .checkoutContainer .checkoutCart td {
+      border: 1px solid black;
+      width: 10em;
+      text-align: center; }
+    .checkoutContainer .checkoutCart button {
+      width: 5em;
+      margin: 0 auto; }

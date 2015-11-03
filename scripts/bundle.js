@@ -31756,7 +31756,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/BooksModel.js":170,"react":160,"react-dom":5}],162:[function(require,module,exports){
+},{"../models/BooksModel.js":171,"react":160,"react-dom":5}],162:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31853,7 +31853,7 @@ module.exports = React.createClass({
 	}
 });
 
-},{"../models/BooksModel.js":170,"../models/CartPlacementModel.js":171,"react":160,"react-dom":5}],163:[function(require,module,exports){
+},{"../models/BooksModel.js":171,"../models/CartPlacementModel.js":172,"react":160,"react-dom":5}],163:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31914,7 +31914,7 @@ module.exports = React.createClass({
 
 });
 
-},{"../models/BooksModel.js":170,"react":160,"react-dom":5}],164:[function(require,module,exports){
+},{"../models/BooksModel.js":171,"react":160,"react-dom":5}],164:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31966,15 +31966,15 @@ module.exports = React.createClass({
 				return cur.get('qty') + sum;
 			}, 0);
 			placements.push(React.createElement(
-				'div',
+				'table',
 				{ className: 'checkoutCart' },
 				React.createElement(
-					'div',
+					'td',
 					null,
 					React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' })
 				),
 				React.createElement(
-					'div',
+					'td',
 					null,
 					React.createElement(
 						'a',
@@ -31983,32 +31983,75 @@ module.exports = React.createClass({
 					)
 				),
 				React.createElement(
-					'div',
-					null,
-					book.get('author')
-				),
-				React.createElement(
-					'div',
+					'td',
 					null,
 					'Quantity:',
 					qty
+				),
+				React.createElement(
+					'td',
+					null,
+					React.createElement(
+						'button',
+						null,
+						'Remove'
+					),
+					React.createElement('br', null),
+					React.createElement('br', null),
+					React.createElement(
+						'button',
+						null,
+						'Edit'
+					)
 				)
 			));
 		}
 		return React.createElement(
 			'div',
-			null,
+			{ className: 'checkoutContainer' },
 			React.createElement(
 				'div',
 				null,
 				placements
+			),
+			React.createElement(
+				'a',
+				{ href: '#confirmation' },
+				React.createElement(
+					'button',
+					null,
+					'Ship my Books'
+				)
 			)
 		);
 	}
 
 });
 
-},{"../models/BooksModel":170,"../models/CartPlacementModel.js":171,"../models/UserModel":172,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
+},{"../models/BooksModel":171,"../models/CartPlacementModel.js":172,"../models/UserModel":173,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+
+		return React.createElement(
+			'div',
+			null,
+			React.createElement(
+				'h1',
+				null,
+				'Your books will be shipped to you soon! Thank you!'
+			)
+		);
+	}
+});
+
+},{"react":160,"react-dom":5}],166:[function(require,module,exports){
 'use strict';
 var React = require('react');
 
@@ -32326,7 +32369,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160}],166:[function(require,module,exports){
+},{"react":160}],167:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32391,7 +32434,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160,"react-dom":5}],167:[function(require,module,exports){
+},{"react":160,"react-dom":5}],168:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32479,7 +32522,7 @@ module.exports = React.createClass({
 
 });
 
-},{"backbone":1,"react":160,"react-dom":5}],168:[function(require,module,exports){
+},{"backbone":1,"react":160,"react-dom":5}],169:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32594,7 +32637,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":160,"react-dom":5}],169:[function(require,module,exports){
+},{"react":160,"react-dom":5}],170:[function(require,module,exports){
 'use strict';
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -32612,6 +32655,7 @@ var LoginComponent = require('./components/LoginComponent.js');
 var RegisterComponent = require('./components/RegisterComponent.js');
 var AddBooksComponent = require('./components/AddBookComponent.js');
 var CartComponent = require('./components/CartComponent.js');
+var ConfirmationComponent = require('./components/ConfirmationComponent.js');
 
 var app = document.getElementById('app');
 
@@ -32623,6 +32667,7 @@ var Router = Backbone.Router.extend({
 		'browse': 'browse',
 		'addBook': 'addBook',
 		'bookDetails/:id': 'bookDetails',
+		'confirmation': 'confirmation',
 		'cart': 'cart'
 	},
 	home: function home() {
@@ -32633,6 +32678,9 @@ var Router = Backbone.Router.extend({
 	},
 	addBook: function addBook() {
 		ReactDOM.render(React.createElement(AddBooksComponent, { router: r }), app);
+	},
+	confirmation: function confirmation() {
+		ReactDOM.render(React.createElement(ConfirmationComponent, { router: r }), app);
 	},
 	login: function login() {
 		ReactDOM.render(React.createElement(LoginComponent, { router: r }), app);
@@ -32653,28 +32701,28 @@ Backbone.history.start();
 
 ReactDOM.render(React.createElement(NavigationComponent, { router: r }), document.getElementById('nav'));
 
-},{"./components/AddBookComponent.js":161,"./components/BookDetailsComponent.js":162,"./components/BrowseBooksComponent.js":163,"./components/CartComponent.js":164,"./components/HomeComponent.js":165,"./components/LoginComponent.js":166,"./components/NavigationComponent.js":167,"./components/RegisterComponent.js":168,"backbone":1,"jquery":4,"react":160,"react-dom":5}],170:[function(require,module,exports){
+},{"./components/AddBookComponent.js":161,"./components/BookDetailsComponent.js":162,"./components/BrowseBooksComponent.js":163,"./components/CartComponent.js":164,"./components/ConfirmationComponent.js":165,"./components/HomeComponent.js":166,"./components/LoginComponent.js":167,"./components/NavigationComponent.js":168,"./components/RegisterComponent.js":169,"backbone":1,"jquery":4,"react":160,"react-dom":5}],171:[function(require,module,exports){
 'use strict';
 
 module.exports = Parse.Object.extend({
   className: 'books'
 });
 
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 'use strict';
 
 module.exports = Parse.Object.extend({
   className: 'cart_placement'
 });
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 'use strict';
 
 module.exports = Parse.Object.extend({
   className: 'User'
 });
 
-},{}]},{},[169])
+},{}]},{},[170])
 
 
 //# sourceMappingURL=bundle.js.map

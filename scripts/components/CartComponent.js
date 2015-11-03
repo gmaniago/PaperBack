@@ -43,21 +43,21 @@ module.exports = React.createClass({
           	return cur.get('qty') + sum
           }, 0)
           placements.push(	
-
-          	<div className="checkoutCart">
-          		<div><img className="image" src={book.get('image')} height="120px" width="80px"/></div>
-				<div><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></div>	
-				<div>{book.get('author')}</div>
-				<div>Quantity:{qty}</div>
-			</div>
+	          	<table className="checkoutCart">
+	          		<td><img className="image" src={book.get('image')} height="120px" width="80px"/></td>
+					<td><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></td>	
+					<td>Quantity:{qty}</td>
+					<td><button>Remove</button><br/><br/><button>Edit</button></td>
+				</table>
 			)
 		}	
 		return (
 			
-				<div>
+				<div className="checkoutContainer">
 					<div >
 						{placements}
 					</div>
+					<a href="#confirmation"><button>Ship my Books</button></a>
 				</div>
 			
 		);

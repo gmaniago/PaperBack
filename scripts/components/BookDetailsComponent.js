@@ -27,7 +27,6 @@ module.exports = React.createClass({
 
 		if(this.state.book) {
 			content = (
-
 				<div className="container-fluid bookDetails">
 					<div className="row">
 						<div className="col-sm-1">
@@ -45,7 +44,7 @@ module.exports = React.createClass({
 						</div>
 					</div>
 				</div>
-
+		
 			)
 		}
 		return(

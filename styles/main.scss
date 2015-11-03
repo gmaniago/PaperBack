@@ -251,11 +251,28 @@ div.registerBox {
 
 // cart details start here
 
-.checkoutCart {
-	display: block;
+.checkoutContainer {
+	margin-top: 3em;
+	.checkoutCart {
+		height: 10em;
+		border: 2px solid black;
+		margin: 0 auto;
+		.image {
+			display: block;
+			margin: 0 auto;
+		}
+		td {
+			border: 1px solid black;
+			width: 10em;
+			text-align: center;	
+		}
+		button {
+			width: 5em;
+			margin: 0 auto;
+		}
+	}
+
 }
-
-
 
 
 
