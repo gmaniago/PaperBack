@@ -30,8 +30,7 @@ module.exports = React.createClass({
 					<a href="">PaperBack</a>
 				</div>
 			</section>
-
-			)
+		)
 	},
 	logout: function(e) {
 		e.preventDefault();
@@ -41,14 +40,12 @@ module.exports = React.createClass({
 	createNavLink: function(url, label) {
 		var currentUrl = Backbone.history.getFragment();
 		if(currentUrl === url) {
-			return (<li className="active"><a href={'#'+url}>{label}</a></li>);
+			return (<li key={url} className="active"><a href={'#'+url}>{label}</a></li>);
 		}
 		else {
-			return (<li><a href={'#'+url}>{label}</a></li>);
+			return (<li key={url}><a href={'#'+url}>{label}</a></li>);
 		}
 	}
-
-
 })
 
 

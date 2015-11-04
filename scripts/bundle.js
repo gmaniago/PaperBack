@@ -31860,6 +31860,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var BooksModel = require('../models/BooksModel.js');
 var FilterComponent = require('./FilterComponent');
+var _ = require('backbone/node_modules/underscore');
 
 module.exports = React.createClass({
 	displayName: 'exports',
@@ -31867,23 +31868,27 @@ module.exports = React.createClass({
 	getInitialState: function getInitialState() {
 		return {
 			books: [],
-			filterText: ''
+			filterText: '',
+			categories: 'choose',
+			filteredBooks: []
 		};
 	},
 	componentWillMount: function componentWillMount() {
 		var _this = this;
 
-		/*Parse.Cloud.beforeSave("books", function(request, response) {
-  	request.object_set(
-  		"title_lowercase",
-  		request.object.get("title").toLowerCase()
-  	);
-  		response.success();
-  });*/
-
 		var query = new Parse.Query(BooksModel);
 		query.descending('createdAt').find().then(function (books) {
-			_this.setState({ books: books });
+			var filteredCategories = _.uniq(books, function (book) {
+				return book.get('category');
+			});
+			var browseCategories = filteredCategories.map(function (book) {
+				return React.createElement(
+					'option',
+					{ key: book.id },
+					book.get('category')
+				);
+			});
+			_this.setState({ books: books, categories: browseCategories });
 		}, function (err) {
 			console.log(err);
 		});
@@ -31892,35 +31897,36 @@ module.exports = React.createClass({
 		var _this2 = this;
 
 		this.setState({ filterText: value });
-
 		var query = new Parse.Query(BooksModel);
 		query.descending('createdAt').contains("title", value).find().then(function (books) {
-			//this.setState({books: books});
-
 			query = new Parse.Query(BooksModel);
 			query.descending('createdAt').contains('author', value).find().then(function (authorBooks) {
 				books = books.concat(authorBooks);
 				_this2.setState({ books: books });
 			}, function (err) {
 				console.log(err);
-				_this2.setState({ books: books });
 			});
 		}, function (err) {
 			console.log(err);
 		});
 	},
 	render: function render() {
-		var browseContent = this.state.books.map(function (book) {
+		var books = this.state.filteredBooks.length === 0 ? this.state.books : this.state.filteredBooks;
+		var browseContent = books.map(function (book) {
 			return React.createElement(
 				'div',
-				{ className: 'allBooks ' },
+				{ className: 'allBooks' },
 				React.createElement(
 					'a',
 					{ href: '#bookDetails/' + book.id },
 					React.createElement(
 						'div',
-						{ className: 'singleBook' },
-						React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' }),
+						{ className: 'singleBook hover01' },
+						React.createElement(
+							'figure',
+							null,
+							React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' })
+						),
 						React.createElement(
 							'h3',
 							{ className: 'title' },
@@ -31939,6 +31945,20 @@ module.exports = React.createClass({
 				React.createElement(FilterComponent, { filterVal: this.state.filterText, filterUpdate: this.stateUpdate })
 			),
 			React.createElement(
+				'div',
+				{ className: 'category-search-container' },
+				React.createElement(
+					'select',
+					{ ref: 'category', onChange: this.categoryPick },
+					React.createElement(
+						'option',
+						null,
+						'Categories'
+					),
+					this.state.categories
+				)
+			),
+			React.createElement(
 				'h3',
 				{ id: 'browseBooks' },
 				'Browse Books'
@@ -31950,11 +31970,19 @@ module.exports = React.createClass({
 				browseContent
 			)
 		);
+	},
+	categoryPick: function categoryPick() {
+		console.log(this.state.books);
+		var category = this.refs.category.value;
+		console.log(category);
+		var newCategory = this.state.books.filter(function (book) {
+			return book.get('category') === category;
+		});
+		this.setState({ filteredBooks: newCategory });
 	}
-
 });
 
-},{"../models/BooksModel.js":172,"./FilterComponent":166,"react":160,"react-dom":5}],164:[function(require,module,exports){
+},{"../models/BooksModel.js":172,"./FilterComponent":166,"backbone/node_modules/underscore":2,"react":160,"react-dom":5}],164:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32592,7 +32620,7 @@ module.exports = React.createClass({
 		if (currentUrl === url) {
 			return React.createElement(
 				'li',
-				{ className: 'active' },
+				{ key: url, className: 'active' },
 				React.createElement(
 					'a',
 					{ href: '#' + url },
@@ -32602,7 +32630,7 @@ module.exports = React.createClass({
 		} else {
 			return React.createElement(
 				'li',
-				null,
+				{ key: url },
 				React.createElement(
 					'a',
 					{ href: '#' + url },
@@ -32611,7 +32639,6 @@ module.exports = React.createClass({
 			);
 		}
 	}
-
 });
 
 },{"backbone":1,"react":160,"react-dom":5}],170:[function(require,module,exports){
