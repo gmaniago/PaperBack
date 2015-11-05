@@ -8,19 +8,38 @@ module.exports = React.createClass({
 				<section id="plans">
 					<div className="container-fluid homeContent">
 						<div className="row">
-							<div className="col-md-6 hero">
-								<h2>PaperBack</h2>
-								<h3 className="firstP">With PaperBack you will be able to explore a vast library of books. When you are done you can simply mail it back at no cost and choose another one to enjoy.</h3>				
+							<div className="col-md-12 hero">
+								<h1>Paper<span id="heroBack">Back</span></h1>
+								<h3 className="firstP">With PaperBack you will be able to explore a vast library of books.</h3>			
 								<p>
 									<a className="btn btn-primary btn-large" href="#register">Start your free month.</a>
 								</p>
 							</div>
-							<div className="col-md-6">
-								<img src="../images/handscopy.jpg" height="500px" width="500px"/>
+						</div>
+					</div>
+
+					<div className="container-fluid">
+						<div className="row">
+							<div className="col-md-4 gifs">
+							<img src="../images/teacher_animated.gif" height="200px" width="200px" />
+							<h3>PaperBack for Students</h3>
+							<h4> Let us face it textbooks are not cheap. With PaperBack you can choose to borrow a book then return it when the semester ends.</h4>
+							</div>
+							<div className="col-md-4 gifs">
+							<img src="../images/engineer_animated.gif" height="250px" width="250px" />
+							<h3>PaperBack for Anyone</h3>
+							<h4>This site is for anyone wanting to learn and explore the beauty of literature.</h4>
+							</div>
+							<div className="col-md-4 gifs">
+							<img src="../images/designer_animated.gif" height="200px" width="200px" />
+							<h3>PaperBack for the busy.</h3>
+							<h4>Dont have time to go the bookstore. PaperBack is perfect for you.</h4>
 							</div>
 						</div>
 					</div>
-			        <div className="container">
+					<hr />
+
+					 <div className="container">
 				        <div className="container-fluid">
 							<div className="row">
 								<div className="col-md-1">
@@ -32,30 +51,9 @@ module.exports = React.createClass({
 										<h3 className="greyFont">Choose from a variety of selections. From Fantasy to Science Fiction.</h3>
 									</div>
 								<div className="col-md-1">
-								</div>
 							</div>
 						</div>
-						<hr />
-
-						<div className="container-fluid">
-							<div className="row">
-								<div className="col-md-4 gifs">
-								<img src="../images/teacher_animated.gif" height="200px" width="200px" />
-								<h3>PaperBack for Students</h3>
-								<h4> Let us face it textbooks are not cheap. With PaperBack you can choose to borrow a book then return it when the semester ends.</h4>
-								</div>
-								<div className="col-md-4 gifs">
-								<img src="../images/engineer_animated.gif" height="250px" width="250px" />
-								<h3>PaperBack for Anyone</h3>
-								<h4>This site is for anyone wanting to learn and explore the beauty of literature.</h4>
-								</div>
-								<div className="col-md-4 gifs">
-								<img src="../images/designer_animated.gif" height="200px" width="200px" />
-								<h3>PaperBack for the busy.</h3>
-								<h4>Dont have time to go the bookstore. PaperBack is perfect for you.</h4>
-								</div>
-							</div>
-						</div>
+					</div>
 						<hr />
 
 						<div className="container-fluid">
@@ -86,7 +84,7 @@ module.exports = React.createClass({
 						        </div>
 						        <ul className="list-group text-center">
 						            <li className="list-group-item"><i className="fa fa-check"></i> 1st Month Free</li>
-						            <li className="list-group-item"><i className="fa fa-check"></i> Borrow 2 up to books a month</li>
+						            <li className="list-group-item"><i className="fa fa-check"></i> Borrow up 2 to books a month</li>
 						            <li className="list-group-item"><i className="fa fa-check"></i> Customer Service Support</li>
 						        </ul>
 						        <div className="panel-footer">

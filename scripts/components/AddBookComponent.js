@@ -33,7 +33,6 @@ module.exports = React.createClass({
 		});
 
 		newBook.save();
-		console.log('book saved')
 		this.props.router.navigate('', {trigger: true});
 	}
 

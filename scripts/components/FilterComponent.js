@@ -14,7 +14,7 @@ module.exports = React.createClass({
 					<input type="text"
 							id="filter-input"
 							ref="filterInput"
-							placeholder="enter a book name"
+							placeholder="  Search by title or author."
 							value={this.props.filterVal}
 							onChange={this.filterTrigger} />
 				</form>

@@ -77,15 +77,24 @@ module.exports = React.createClass({
 		})
 		return (
 			<div>
-				<div className="filter-container">
-					<FilterComponent filterVal={this.state.filterText} filterUpdate={this.stateUpdate} />
-				</div>
-				<div className="category-search-container">
-					<select ref="category" onChange={this.categoryPick}>
-						<option>Categories</option>
-						{this.state.categories}
-					</select>
-				</div>
+					<div className="top_hero">
+						<div className="top_hero_ul">
+						    <ul>
+						      <li className="top_hero_item1">Take your mind off some things.</li>
+						      <li className="top_hero_item2">Go ahead. Enjoy some free time.</li>
+						     </ul>
+						</div>
+						<div className="filter-container">
+							<FilterComponent filterVal={this.state.filterText} filterUpdate={this.stateUpdate} />
+						</div>
+						<div className="category-search-container">
+							<select ref="category" onChange={this.categoryPick}>
+								<option>Categories</option>
+								{this.state.categories}
+							</select>
+						</div>
+					</div>
+
 				<h3 id="browseBooks">Browse Books</h3><br/>
 				<div className="bookList row">
 					{browseContent}

@@ -31750,7 +31750,6 @@ module.exports = React.createClass({
 		});
 
 		newBook.save();
-		console.log('book saved');
 		this.props.router.navigate('', { trigger: true });
 	}
 
@@ -31941,21 +31940,43 @@ module.exports = React.createClass({
 			null,
 			React.createElement(
 				'div',
-				{ className: 'filter-container' },
-				React.createElement(FilterComponent, { filterVal: this.state.filterText, filterUpdate: this.stateUpdate })
-			),
-			React.createElement(
-				'div',
-				{ className: 'category-search-container' },
+				{ className: 'top_hero' },
 				React.createElement(
-					'select',
-					{ ref: 'category', onChange: this.categoryPick },
+					'div',
+					{ className: 'top_hero_ul' },
 					React.createElement(
-						'option',
+						'ul',
 						null,
-						'Categories'
-					),
-					this.state.categories
+						React.createElement(
+							'li',
+							{ className: 'top_hero_item1' },
+							'Take your mind off some things.'
+						),
+						React.createElement(
+							'li',
+							{ className: 'top_hero_item2' },
+							'Go ahead. Enjoy some free time.'
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'filter-container' },
+					React.createElement(FilterComponent, { filterVal: this.state.filterText, filterUpdate: this.stateUpdate })
+				),
+				React.createElement(
+					'div',
+					{ className: 'category-search-container' },
+					React.createElement(
+						'select',
+						{ ref: 'category', onChange: this.categoryPick },
+						React.createElement(
+							'option',
+							null,
+							'Categories'
+						),
+						this.state.categories
+					)
 				)
 			),
 			React.createElement(
@@ -32158,7 +32179,7 @@ module.exports = React.createClass({
 				React.createElement('input', { type: 'text',
 					id: 'filter-input',
 					ref: 'filterInput',
-					placeholder: 'enter a book name',
+					placeholder: '  Search by title or author.',
 					value: this.props.filterVal,
 					onChange: this.filterTrigger })
 			)
@@ -32190,16 +32211,21 @@ module.exports = React.createClass({
 					{ className: 'row' },
 					React.createElement(
 						'div',
-						{ className: 'col-md-6 hero' },
+						{ className: 'col-md-12 hero' },
 						React.createElement(
-							'h2',
+							'h1',
 							null,
-							'PaperBack'
+							'Paper',
+							React.createElement(
+								'span',
+								{ id: 'heroBack' },
+								'Back'
+							)
 						),
 						React.createElement(
 							'h3',
 							{ className: 'firstP' },
-							'With PaperBack you will be able to explore a vast library of books. When you are done you can simply mail it back at no cost and choose another one to enjoy.'
+							'With PaperBack you will be able to explore a vast library of books.'
 						),
 						React.createElement(
 							'p',
@@ -32210,14 +32236,63 @@ module.exports = React.createClass({
 								'Start your free month.'
 							)
 						)
-					),
-					React.createElement(
-						'div',
-						{ className: 'col-md-6' },
-						React.createElement('img', { src: '../images/handscopy.jpg', height: '500px', width: '500px' })
 					)
 				)
 			),
+			React.createElement(
+				'div',
+				{ className: 'container-fluid' },
+				React.createElement(
+					'div',
+					{ className: 'row' },
+					React.createElement(
+						'div',
+						{ className: 'col-md-4 gifs' },
+						React.createElement('img', { src: '../images/teacher_animated.gif', height: '200px', width: '200px' }),
+						React.createElement(
+							'h3',
+							null,
+							'PaperBack for Students'
+						),
+						React.createElement(
+							'h4',
+							null,
+							' Let us face it textbooks are not cheap. With PaperBack you can choose to borrow a book then return it when the semester ends.'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-md-4 gifs' },
+						React.createElement('img', { src: '../images/engineer_animated.gif', height: '250px', width: '250px' }),
+						React.createElement(
+							'h3',
+							null,
+							'PaperBack for Anyone'
+						),
+						React.createElement(
+							'h4',
+							null,
+							'This site is for anyone wanting to learn and explore the beauty of literature.'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-md-4 gifs' },
+						React.createElement('img', { src: '../images/designer_animated.gif', height: '200px', width: '200px' }),
+						React.createElement(
+							'h3',
+							null,
+							'PaperBack for the busy.'
+						),
+						React.createElement(
+							'h4',
+							null,
+							'Dont have time to go the bookstore. PaperBack is perfect for you.'
+						)
+					)
+				)
+			),
+			React.createElement('hr', null),
 			React.createElement(
 				'div',
 				{ className: 'container' },
@@ -32253,60 +32328,6 @@ module.exports = React.createClass({
 							)
 						),
 						React.createElement('div', { className: 'col-md-1' })
-					)
-				),
-				React.createElement('hr', null),
-				React.createElement(
-					'div',
-					{ className: 'container-fluid' },
-					React.createElement(
-						'div',
-						{ className: 'row' },
-						React.createElement(
-							'div',
-							{ className: 'col-md-4 gifs' },
-							React.createElement('img', { src: '../images/teacher_animated.gif', height: '200px', width: '200px' }),
-							React.createElement(
-								'h3',
-								null,
-								'PaperBack for Students'
-							),
-							React.createElement(
-								'h4',
-								null,
-								' Let us face it textbooks are not cheap. With PaperBack you can choose to borrow a book then return it when the semester ends.'
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-md-4 gifs' },
-							React.createElement('img', { src: '../images/engineer_animated.gif', height: '250px', width: '250px' }),
-							React.createElement(
-								'h3',
-								null,
-								'PaperBack for Anyone'
-							),
-							React.createElement(
-								'h4',
-								null,
-								'This site is for anyone wanting to learn and explore the beauty of literature.'
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-md-4 gifs' },
-							React.createElement('img', { src: '../images/designer_animated.gif', height: '200px', width: '200px' }),
-							React.createElement(
-								'h3',
-								null,
-								'PaperBack for the busy.'
-							),
-							React.createElement(
-								'h4',
-								null,
-								'Dont have time to go the bookstore. PaperBack is perfect for you.'
-							)
-						)
 					)
 				),
 				React.createElement('hr', null),
@@ -32381,7 +32402,7 @@ module.exports = React.createClass({
 								'li',
 								{ className: 'list-group-item' },
 								React.createElement('i', { className: 'fa fa-check' }),
-								' Borrow 2 up to books a month'
+								' Borrow up 2 to books a month'
 							),
 							React.createElement(
 								'li',
