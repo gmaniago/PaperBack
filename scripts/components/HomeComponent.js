@@ -71,7 +71,7 @@ module.exports = React.createClass({
 						</div>
 						<hr />
 
-						<div className="col-md-6 text-center pricing">
+						<div className="col-md-4 col-md-offset-2 text-center pricing">
 						    <div className="panel panel-danger panel-pricing">
 						        <div className="panel-heading">
 						            <i className="fa fa-desktop"></i>
@@ -90,7 +90,7 @@ module.exports = React.createClass({
 						        </div>
 						    </div>
 						</div>
-						<div className="col-md-6 text-center pricing">
+						<div className="col-md-4 text-center pricing">
 							<div className="panel panel-warning panel-pricing">
 							    <div className="panel-heading">
 							        <i className="fa fa-desktop"></i>

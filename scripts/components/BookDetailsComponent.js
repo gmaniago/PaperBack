@@ -29,18 +29,14 @@ module.exports = React.createClass({
 			content = (
 				<div className="container-fluid bookDetails">
 					<div className="row">
-						<div className="col-sm-1">
+						<div className="col-sm-5 image-container">
+						<img src={this.state.book.get('image')}height="450px" width="300px" border="0px"/>
 						</div>
-						<div className="col-sm-5">
-						<img src={this.state.book.get('image')}height="500px" width="350px" border="0px"/>
-						</div>
-						<div className="col-sm-5 details">
+						<div className="col-sm-6 details">
 							<h2 className="title">{this.state.book.get('title')}</h2>
 							<p className="descript">{this.state.book.get('description')}</p>
 							<p className="detailsAuthor">Author: {this.state.book.get('author')}</p>
 							<a href="#browse"><button type="button" onClick ={this.clicked}>Add Book</button></a>
-						</div>
-						<div className="col-sm-1">
 						</div>
 					</div>
 				</div>

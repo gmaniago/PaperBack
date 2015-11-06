@@ -31795,15 +31795,14 @@ module.exports = React.createClass({
 				React.createElement(
 					'div',
 					{ className: 'row' },
-					React.createElement('div', { className: 'col-sm-1' }),
 					React.createElement(
 						'div',
-						{ className: 'col-sm-5' },
-						React.createElement('img', { src: this.state.book.get('image'), height: '500px', width: '350px', border: '0px' })
+						{ className: 'col-sm-5 image-container' },
+						React.createElement('img', { src: this.state.book.get('image'), height: '450px', width: '300px', border: '0px' })
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-sm-5 details' },
+						{ className: 'col-sm-6 details' },
 						React.createElement(
 							'h2',
 							{ className: 'title' },
@@ -31829,8 +31828,7 @@ module.exports = React.createClass({
 								'Add Book'
 							)
 						)
-					),
-					React.createElement('div', { className: 'col-sm-1' })
+					)
 				)
 			);
 		}
@@ -32351,7 +32349,7 @@ module.exports = React.createClass({
 				React.createElement('hr', null),
 				React.createElement(
 					'div',
-					{ className: 'col-md-6 text-center pricing' },
+					{ className: 'col-md-4 col-md-offset-2 text-center pricing' },
 					React.createElement(
 						'div',
 						{ className: 'panel panel-danger panel-pricing' },
@@ -32413,7 +32411,7 @@ module.exports = React.createClass({
 				),
 				React.createElement(
 					'div',
-					{ className: 'col-md-6 text-center pricing' },
+					{ className: 'col-md-4 text-center pricing' },
 					React.createElement(
 						'div',
 						{ className: 'panel panel-warning panel-pricing' },
