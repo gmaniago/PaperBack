@@ -67,39 +67,39 @@ module.exports = React.createClass({
 		var books = this.state.filteredBooks.length === 0 ? this.state.books : this.state.filteredBooks;
 		var browseContent = books.map(function(book) {
 			return (
-					<div className="allBooks"><a href={'#bookDetails/' + book.id}>
-						<div className="singleBook hover01">
-							<figure><img className="mainImage" src={book.get('image')}height="300px" width="200px" border="0px"/></figure>
-							<h3 className="title">{book.get('title')}</h3>
-						</div></a>
-					</div>
+						<div className="singleBook hover01 col-sm-4">
+							<a href={'#bookDetails/' + book.id}>
+								<figure><img className="mainImage" src={book.get('image')}height="300px" width="200px" border="0px"/></figure>
+								<h3 className="title">{book.get('title')}</h3>
+							</a>
+						</div>
+
 			)
 		})
 		return (
-			<div>
-					<div className="top_hero">
-						<div className="top_hero_ul">
-						    <ul>
-						      <li className="top_hero_item1">Take your mind off some things.</li>
-						      <li className="top_hero_item2">Go ahead. Enjoy some free time.</li>
-						     </ul>
+				<div className="container-fluid">
+					<div className="row">
+					<hr />
+						<div className="col-sm-4 search-category-container">
+							<h3 id="browseBooks">Search</h3><br/>
+							<div className="filter-container">
+								<FilterComponent filterVal={this.state.filterText} filterUpdate={this.stateUpdate} />
+							</div>
+							<div className="category-search-container">
+								<select ref="category" onChange={this.categoryPick}>
+									<option>Categories</option>
+									{this.state.categories}
+								</select>
+							</div>
 						</div>
-						<div className="filter-container">
-							<FilterComponent filterVal={this.state.filterText} filterUpdate={this.stateUpdate} />
-						</div>
-						<div className="category-search-container">
-							<select ref="category" onChange={this.categoryPick}>
-								<option>Categories</option>
-								{this.state.categories}
-							</select>
+						<div className="col-sm-8">
+							<h3 id="browseBooks">Browse Books</h3><br/>
+							<div className="bookList container">
+								{browseContent}
+							</div>
 						</div>
 					</div>
-
-				<h3 id="browseBooks">Browse Books</h3><br/>
-				<div className="bookList row">
-					{browseContent}
 				</div>
-			</div>
 		)
 	},
 	categoryPick: function() {
@@ -112,5 +112,4 @@ module.exports = React.createClass({
 		this.setState({filteredBooks: newCategory})
 	}
 })
-
 

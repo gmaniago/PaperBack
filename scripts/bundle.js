@@ -31914,81 +31914,74 @@ module.exports = React.createClass({
 		var browseContent = books.map(function (book) {
 			return React.createElement(
 				'div',
-				{ className: 'allBooks' },
+				{ className: 'singleBook hover01 col-sm-4' },
 				React.createElement(
 					'a',
 					{ href: '#bookDetails/' + book.id },
 					React.createElement(
-						'div',
-						{ className: 'singleBook hover01' },
-						React.createElement(
-							'figure',
-							null,
-							React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' })
-						),
-						React.createElement(
-							'h3',
-							{ className: 'title' },
-							book.get('title')
-						)
+						'figure',
+						null,
+						React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' })
+					),
+					React.createElement(
+						'h3',
+						{ className: 'title' },
+						book.get('title')
 					)
 				)
 			);
 		});
 		return React.createElement(
 			'div',
-			null,
+			{ className: 'container-fluid' },
 			React.createElement(
 				'div',
-				{ className: 'top_hero' },
+				{ className: 'row' },
+				React.createElement('hr', null),
 				React.createElement(
 					'div',
-					{ className: 'top_hero_ul' },
+					{ className: 'col-sm-4 search-category-container' },
 					React.createElement(
-						'ul',
-						null,
+						'h3',
+						{ id: 'browseBooks' },
+						'Search'
+					),
+					React.createElement('br', null),
+					React.createElement(
+						'div',
+						{ className: 'filter-container' },
+						React.createElement(FilterComponent, { filterVal: this.state.filterText, filterUpdate: this.stateUpdate })
+					),
+					React.createElement(
+						'div',
+						{ className: 'category-search-container' },
 						React.createElement(
-							'li',
-							{ className: 'top_hero_item1' },
-							'Take your mind off some things.'
-						),
-						React.createElement(
-							'li',
-							{ className: 'top_hero_item2' },
-							'Go ahead. Enjoy some free time.'
+							'select',
+							{ ref: 'category', onChange: this.categoryPick },
+							React.createElement(
+								'option',
+								null,
+								'Categories'
+							),
+							this.state.categories
 						)
 					)
 				),
 				React.createElement(
 					'div',
-					{ className: 'filter-container' },
-					React.createElement(FilterComponent, { filterVal: this.state.filterText, filterUpdate: this.stateUpdate })
-				),
-				React.createElement(
-					'div',
-					{ className: 'category-search-container' },
+					{ className: 'col-sm-8' },
 					React.createElement(
-						'select',
-						{ ref: 'category', onChange: this.categoryPick },
-						React.createElement(
-							'option',
-							null,
-							'Categories'
-						),
-						this.state.categories
+						'h3',
+						{ id: 'browseBooks' },
+						'Browse Books'
+					),
+					React.createElement('br', null),
+					React.createElement(
+						'div',
+						{ className: 'bookList container' },
+						browseContent
 					)
 				)
-			),
-			React.createElement(
-				'h3',
-				{ id: 'browseBooks' },
-				'Browse Books'
-			),
-			React.createElement('br', null),
-			React.createElement(
-				'div',
-				{ className: 'bookList row' },
-				browseContent
 			)
 		);
 	},
@@ -32205,36 +32198,32 @@ module.exports = React.createClass({
 			{ id: 'plans' },
 			React.createElement(
 				'div',
-				{ className: 'container-fluid homeContent' },
+				{ id: 'wrapper', className: 'heroContent' },
 				React.createElement(
-					'div',
-					{ className: 'row' },
+					'header',
+					{ className: 'hero' },
 					React.createElement(
-						'div',
-						{ className: 'col-md-12 hero' },
+						'h1',
+						null,
+						'Paper',
 						React.createElement(
-							'h1',
-							null,
-							'Paper',
-							React.createElement(
-								'span',
-								{ id: 'heroBack' },
-								'Back'
-							)
-						),
+							'span',
+							{ id: 'heroBack' },
+							'Back'
+						)
+					),
+					React.createElement(
+						'h3',
+						null,
+						'With PaperBack you will be able to explore a vast library of books.'
+					),
+					React.createElement(
+						'p',
+						{ className: 'centered' },
 						React.createElement(
-							'h3',
-							{ className: 'firstP' },
-							'With PaperBack you will be able to explore a vast library of books.'
-						),
-						React.createElement(
-							'p',
-							null,
-							React.createElement(
-								'a',
-								{ className: 'btn btn-primary btn-large', href: '#register' },
-								'Start your free month.'
-							)
+							'a',
+							{ className: 'btn', href: '#register' },
+							'Start your free month.'
 						)
 					)
 				)
@@ -32533,25 +32522,35 @@ module.exports = React.createClass({
 		}
 		return React.createElement(
 			'div',
-			{ className: 'loginPage' },
+			{ className: 'container-fluid loginPage' },
 			React.createElement(
-				'form',
-				{ className: 'form', onSubmit: this.onLogin },
+				'div',
+				{ className: 'row' },
+				React.createElement('div', { className: 'col-sm-3' }),
 				React.createElement(
-					'h2',
-					{ className: 'logRegister' },
-					'Log In'
+					'div',
+					{ className: 'col-sm-6' },
+					React.createElement(
+						'form',
+						{ className: 'form', onSubmit: this.onLogin },
+						React.createElement(
+							'h2',
+							{ className: 'logRegister' },
+							'Log In'
+						),
+						React.createElement('input', { type: 'text', ref: 'username', placeholder: 'username' }),
+						React.createElement('br', null),
+						React.createElement('input', { type: 'password', ref: 'password', placeholder: 'password' }),
+						React.createElement('br', null),
+						React.createElement(
+							'button',
+							null,
+							'Log In'
+						),
+						hasError
+					)
 				),
-				React.createElement('input', { type: 'text', ref: 'username', placeholder: 'username' }),
-				React.createElement('br', null),
-				React.createElement('input', { type: 'password', ref: 'password', placeholder: 'password' }),
-				React.createElement('br', null),
-				React.createElement(
-					'button',
-					null,
-					'Log In'
-				),
-				hasError
+				React.createElement('div', { className: 'col-sm-3' })
 			)
 		);
 	},
