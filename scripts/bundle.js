@@ -32145,13 +32145,6 @@ module.exports = React.createClass({
 
 });
 
-// <ul>
-// 	<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
-// 	<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
-// 	<li>Quantity:{qty}</li>
-// 	<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button></li>
-// </ul>
-
 },{"../models/BooksModel":172,"../models/CartPlacementModel.js":173,"../models/UserModel":174,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
 'use strict';
 

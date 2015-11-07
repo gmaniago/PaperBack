@@ -32,7 +32,6 @@ module.exports = React.createClass({
         		this.setState({
 					placements: placements
 				});
-				console.log(placements);
    			},
 		});	
 	},
@@ -69,7 +68,7 @@ module.exports = React.createClass({
 								{qty}
 							</td>
 							<td>
-								<button onClick={ this.removeBook.bind(this, book) }>Remove</button>
+								<button className="removebutton" onClick={ this.removeBook.bind(this, book) }>Remove</button>
 							</td>
 						</tr>					
 					</tbody>
@@ -82,7 +81,7 @@ module.exports = React.createClass({
 					<div >
 						{placements}
 					</div>
-					<a href="#confirmation"><button id="shipBtn">Ship my Books</button></a>
+					<a href="#confirmation"><button id="shipBtn" onClick={this.shipBook.bind(placements)}>Ship my Books</button></a>
 				</div>
 			
 		);
@@ -96,13 +95,54 @@ module.exports = React.createClass({
 				var deleteDiv = document.getElementById(""+book.id);
 				deleteDiv.className= "removeDiv";
 				var deleteBook = books[0];
+				console.log(book.id);
 				deleteBook.destroy();
 			},
 			error: (error) => {
 				console.log(error);
 			}
 		});
+	},
+	shipBook: function(placements) {
+		$(".removebutton").click();
+		 for(var book_id in this.state.placements){
+		 var delbook = this.state.placements[book_id][0].get('book');
+		 console.log("deletebook");
+		 console.log(delbook);
+		 query.equalTo('user', Parse.User.current());
+		 query.equalTo('book', delbook);
+		 query.limit(1).
+		find({
+			success: (books) => {
+				console.log("books from server");
+				console.log(books.length);
+				console.log(books);
+					var book = books[0];
+					console.log(book.id);
+					var deleteDiv = document.getElementById(""+book.id);
+				deleteDiv.className= "removeDiv";
+				 
+				book.destroy();
+				
+			},
+			error: (error) => {
+				console.log(error);
+			}
+		});
+	      };
+		
+
+
 	}
 
 });
 
+
+					// <ul>
+					// 	<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
+					// 	<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
+					// 	<li>Quantity:{qty}</li>
+					// 	<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button></li>
+					// </ul>
+
+		
