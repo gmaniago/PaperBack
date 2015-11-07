@@ -31922,7 +31922,7 @@ module.exports = React.createClass({
 						React.createElement('img', { className: 'mainImage', src: book.get('image'), height: '300px', width: '200px', border: '0px' })
 					),
 					React.createElement(
-						'h3',
+						'h5',
 						{ className: 'title' },
 						book.get('title')
 					)
@@ -31935,7 +31935,6 @@ module.exports = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'row' },
-				React.createElement('hr', null),
 				React.createElement(
 					'div',
 					{ className: 'col-sm-4 search-category-container' },
@@ -32048,42 +32047,63 @@ module.exports = React.createClass({
 			}, 0);
 			placements.push(React.createElement(
 				'div',
-				{ className: 'checkoutCart' },
+				{ id: book.id, className: 'checkoutCart col-sm-6 col-sm-offset-2' },
 				React.createElement(
-					'ul',
-					null,
+					'table',
+					{ className: 'table table-bordered table-hover' },
 					React.createElement(
-						'li',
-						null,
-						React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' })
-					),
-					React.createElement(
-						'li',
+						'thead',
 						null,
 						React.createElement(
-							'a',
-							{ href: '#bookDetails/' + book.id },
-							book.get('title')
+							'tr',
+							null,
+							React.createElement(
+								'th',
+								null,
+								'Book Title'
+							),
+							React.createElement(
+								'th',
+								null,
+								'Quantity'
+							),
+							React.createElement(
+								'th',
+								null,
+								'Edit'
+							)
 						)
 					),
 					React.createElement(
-						'li',
-						null,
-						'Quantity:',
-						qty
-					),
-					React.createElement(
-						'li',
+						'tbody',
 						null,
 						React.createElement(
-							'button',
-							{ onClick: this.removeBook.bind(this, book) },
-							'Remove'
-						),
-						React.createElement(
-							'button',
+							'tr',
 							null,
-							'Edit'
+							React.createElement(
+								'td',
+								null,
+								React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' }),
+								React.createElement(
+									'a',
+									{ href: '#bookDetails/' + book.id },
+									book.get('title')
+								)
+							),
+							React.createElement(
+								'td',
+								null,
+								qty
+							),
+							React.createElement(
+								'td',
+								null,
+								React.createElement(
+									'button',
+									{ onClick: this.removeBook.bind(this, book) },
+									'Remove'
+								)
+							)
 						)
 					)
 				)
@@ -32109,12 +32129,12 @@ module.exports = React.createClass({
 		);
 	},
 	removeBook: function removeBook(book) {
-
 		query.equalTo('user', Parse.User.current());
 		query.equalTo('book', book).limit(1).find({
 			success: function success(books) {
+				var deleteDiv = document.getElementById("" + book.id);
+				deleteDiv.className = "removeDiv";
 				var deleteBook = books[0];
-
 				deleteBook.destroy();
 			},
 			error: function error(_error) {
@@ -32124,6 +32144,13 @@ module.exports = React.createClass({
 	}
 
 });
+
+// <ul>
+// 	<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
+// 	<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
+// 	<li>Quantity:{qty}</li>
+// 	<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button></li>
+// </ul>
 
 },{"../models/BooksModel":172,"../models/CartPlacementModel.js":173,"../models/UserModel":174,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
 'use strict';

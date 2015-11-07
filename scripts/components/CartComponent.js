@@ -44,18 +44,40 @@ module.exports = React.createClass({
           	return cur.get('qty') + sum
           }, 0)
           placements.push(	
-	          	<div className="checkoutCart">
-					<ul>
-						<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
-						<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
-						<li>Quantity:{qty}</li>
-						<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button><button>Edit</button></li>
-					</ul>
-				</div>
+	        <div id={book.id} className="checkoutCart col-sm-6 col-sm-offset-2">
+	          	<table className="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>
+								Book Title
+							</th>
+							<th>
+								Quantity
+							</th>
+							<th>
+								Edit
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<img className="image" src={book.get('image')} height="120px" width="80px"/>
+								<a href={'#bookDetails/'+book.id}>{book.get('title')}</a>
+							</td>		
+							<td>
+								{qty}
+							</td>
+							<td>
+								<button onClick={ this.removeBook.bind(this, book) }>Remove</button>
+							</td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
 			)
 		}	
-		return (
-			
+		return (		
 				<div className="checkoutContainer">
 					<div >
 						{placements}
@@ -66,14 +88,14 @@ module.exports = React.createClass({
 		);
 	},
 	removeBook: function(book) {
-		
 		query.equalTo('user', Parse.User.current());
 		query.equalTo('book', book).
 		limit(1).
 		find({
 			success: (books) => {
+				var deleteDiv = document.getElementById(""+book.id);
+				deleteDiv.className= "removeDiv";
 				var deleteBook = books[0];
-
 				deleteBook.destroy();
 			},
 			error: (error) => {
@@ -85,6 +107,11 @@ module.exports = React.createClass({
 });
 
 
-
+					// <ul>
+					// 	<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
+					// 	<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
+					// 	<li>Quantity:{qty}</li>
+					// 	<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button></li>
+					// </ul>
 
 		

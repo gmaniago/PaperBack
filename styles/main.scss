@@ -248,17 +248,6 @@ div.registerBox{
 	}
 }
 
-// cart details start here
-
-.checkoutCart {
-	display: inline-block;
-	li {
-		text-decoration: none;
-		list-style: none;
-		text-align: center;
-	}
-}
-
 // homecontent	
 #wrapper {
 	margin: 0 auto;
@@ -345,6 +334,10 @@ padding-top:20px;
 	transform: scale(1.05);
 }
 
+.removeDiv {
+	display: none !important;
+}
+
 .bookList {
 	width: 100%;
 	text-align: center;
@@ -354,5 +347,17 @@ padding-top:20px;
 		margin-bottom: 3em;
 	}
 }
+
+// cart details start here
+
+// .checkoutCart {
+// 	float: left;
+// 	border: 1px solid black;
+// 	tr {
+// 		text-align: center;
+// 		border-bottom: 1px solid black;
+// 		width: 100%;
+// 	}
+// }
 
 

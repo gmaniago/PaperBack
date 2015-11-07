@@ -202,13 +202,6 @@ div.registerBox {
   .bookDetails .detailsAuthor {
     font-size: 1.3em; }
 
-.checkoutCart {
-  display: inline-block; }
-  .checkoutCart li {
-    text-decoration: none;
-    list-style: none;
-    text-align: center; }
-
 #wrapper {
   margin: 0 auto;
   width: 100%;
@@ -277,6 +270,9 @@ header {
 .hover01 figure:hover img {
   -webkit-transform: scale(1.1);
   transform: scale(1.05); }
+
+.removeDiv {
+  display: none !important; }
 
 .bookList {
   width: 100%;

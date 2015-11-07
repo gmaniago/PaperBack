@@ -70,7 +70,7 @@ module.exports = React.createClass({
 						<div className="singleBook hover01 col-sm-4">
 							<a href={'#bookDetails/' + book.id}>
 								<figure><img className="mainImage" src={book.get('image')}height="300px" width="200px" border="0px"/></figure>
-								<h3 className="title">{book.get('title')}</h3>
+								<h5 className="title">{book.get('title')}</h5>
 							</a>
 						</div>
 
@@ -79,7 +79,6 @@ module.exports = React.createClass({
 		return (
 				<div className="container-fluid">
 					<div className="row">
-					<hr />
 						<div className="col-sm-4 search-category-container">
 							<h3 id="browseBooks">Search</h3><br/>
 							<div className="filter-container">
