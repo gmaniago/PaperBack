@@ -32049,60 +32049,33 @@ module.exports = React.createClass({
 				'div',
 				{ id: book.id, className: 'checkoutCart col-sm-6 col-sm-offset-2' },
 				React.createElement(
-					'table',
-					{ className: 'table table-bordered table-hover' },
+					'tbody',
+					null,
 					React.createElement(
-						'thead',
+						'tr',
 						null,
 						React.createElement(
-							'tr',
+							'td',
 							null,
+							React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' }),
 							React.createElement(
-								'th',
-								null,
-								'Book Title'
-							),
-							React.createElement(
-								'th',
-								null,
-								'Quantity'
-							),
-							React.createElement(
-								'th',
-								null,
-								'Edit'
+								'a',
+								{ href: '#bookDetails/' + book.id },
+								book.get('title')
 							)
-						)
-					),
-					React.createElement(
-						'tbody',
-						null,
+						),
 						React.createElement(
-							'tr',
+							'td',
+							null,
+							qty
+						),
+						React.createElement(
+							'td',
 							null,
 							React.createElement(
-								'td',
-								null,
-								React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' }),
-								React.createElement(
-									'a',
-									{ href: '#bookDetails/' + book.id },
-									book.get('title')
-								)
-							),
-							React.createElement(
-								'td',
-								null,
-								qty
-							),
-							React.createElement(
-								'td',
-								null,
-								React.createElement(
-									'button',
-									{ onClick: this.removeBook.bind(this, book) },
-									'Remove'
-								)
+								'button',
+								{ onClick: this.removeBook.bind(this, book) },
+								'Remove'
 							)
 						)
 					)
@@ -32111,7 +32084,34 @@ module.exports = React.createClass({
 		}
 		return React.createElement(
 			'div',
-			{ className: 'checkoutContainer' },
+			{ className: 'checkoutContainer col-sm-6 col-sm-offset-3' },
+			React.createElement(
+				'table',
+				{ className: 'table table-bordered table-hover' },
+				React.createElement(
+					'thead',
+					null,
+					React.createElement(
+						'tr',
+						null,
+						React.createElement(
+							'th',
+							null,
+							'Book Title'
+						),
+						React.createElement(
+							'th',
+							null,
+							'Quantity'
+						),
+						React.createElement(
+							'th',
+							null,
+							'Edit'
+						)
+					)
+				)
+			),
 			React.createElement(
 				'div',
 				null,
@@ -32510,8 +32510,7 @@ module.exports = React.createClass({
 						)
 					)
 				)
-			),
-			React.createElement('hr', null)
+			)
 		);
 	}
 
@@ -32544,10 +32543,10 @@ module.exports = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'row' },
-				React.createElement('div', { className: 'col-sm-3' }),
+				React.createElement('div', { className: 'col-sm-4' }),
 				React.createElement(
 					'div',
-					{ className: 'col-sm-6' },
+					{ className: 'col-sm-4' },
 					React.createElement(
 						'form',
 						{ className: 'form', onSubmit: this.onLogin },
@@ -32568,7 +32567,7 @@ module.exports = React.createClass({
 						hasError
 					)
 				),
-				React.createElement('div', { className: 'col-sm-3' })
+				React.createElement('div', { className: 'col-sm-4' })
 			)
 		);
 	},
@@ -32706,10 +32705,10 @@ module.exports = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'row' },
-				React.createElement('div', { className: 'col-md-3' }),
+				React.createElement('div', { className: 'col-md-4' }),
 				React.createElement(
 					'div',
-					{ className: 'col-md-6 registerBox' },
+					{ className: 'col-md-4 registerBox' },
 					React.createElement(
 						'form',
 						{ className: 'form', onSubmit: this.onRegister },
@@ -32754,7 +32753,7 @@ module.exports = React.createClass({
 						hasError
 					)
 				),
-				React.createElement('div', { className: 'col-md-3' })
+				React.createElement('div', { className: 'col-md-4 registerBox' })
 			)
 		);
 	},
@@ -32793,6 +32792,25 @@ module.exports = React.createClass({
 	}
 
 });
+
+// <input type="number" ref="cardName" placeholder="name on card" />
+// <br />
+// <input type="text" ref="creditNumber" placeholder="card number" />
+// <br />
+// <select className="select form-control">
+// 	<option value="First Choice">
+// 	Visa
+// 	</option>
+// 	<option value="Second Choice">
+// 	Mastercard
+// 	</option>
+// 	<option value="Third Choice">
+// 	Amex
+// 	</option>
+// 	<option value="Fourth Choice">
+// 	Discover
+// 	</option>
+// </select>
 
 },{"react":160,"react-dom":5}],171:[function(require,module,exports){
 'use strict';

@@ -57,6 +57,7 @@ a {
 		border: none;
 		padding-top: .5em;
 		font-size: 1.3em;
+		border-radius: 0;
 	}
 }
 //Nav bar here
@@ -103,11 +104,10 @@ a {
 div.registerBox{
 	color: black;
 	padding-bottom: 2em;
-	padding-top: 2em;
+	padding-top: 4em;
 	form {
 		border: 2px solid $buttonBackground;
 		padding-bottom: 2em;
-		padding-top: 1em;
 		input,button,select {
 			border: 2px solid $buttonBackground;
 			height: 3em;
@@ -144,11 +144,11 @@ div.registerBox{
 
 .loginPage {
 	padding-bottom: 2em;
-	padding-top: 2em;
+	margin-top: 4em;
+	margin-bottom: 21em;
 	form{
 		border: 2px solid $buttonBackground;
 		padding-bottom: 2em;
-		padding-top: 1em;
 		input,button,select {
 			border: 2px solid $buttonBackground;
 			height: 3em;
@@ -280,7 +280,7 @@ header {
   height: 40em;
   width: 100%;
   overflow: hidden;
-  background: orange url("../images/foggy-read.png") no-repeat center center;
+  background: url("../images/foggy-read.png") no-repeat center center;
   background-size: cover;
 }
 
@@ -360,4 +360,19 @@ padding-top:20px;
 // 	}
 // }
 
+.btn-danger, .btn-warning {
+	border-radius: 0;
+}
 
+#footer {
+	text-align: center;
+	background: $background-color;
+	margin-top: 2em;
+	font-size: 1.2em;
+	height: 2.5em;
+	padding-top: .5em;
+	a{
+		padding-right: 5%;
+		color: $fontColorBlack;
+	}
+}

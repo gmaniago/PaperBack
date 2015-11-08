@@ -15,9 +15,9 @@ module.exports = React.createClass({
 		return (
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-md-3">
+					<div className="col-md-4">
 					</div>
-						<div className="col-md-6 registerBox">
+						<div className="col-md-4 registerBox">
 							<form className="form" onSubmit={this.onRegister}>
 								<h2>Register Here</h2>
 								<input type="text" ref="username" placeholder="UserName" /><br />
@@ -45,7 +45,7 @@ module.exports = React.createClass({
 								{hasError}
 							</form>
 						</div>
-					<div className="col-md-3">
+					<div className="col-md-4 registerBox">
 					</div>
 				</div>
 			</div>
@@ -89,5 +89,22 @@ module.exports = React.createClass({
 
 })
 
-
+								// <input type="number" ref="cardName" placeholder="name on card" />
+								// <br />
+								// <input type="text" ref="creditNumber" placeholder="card number" />
+								// <br />
+								// <select className="select form-control">
+								// 	<option value="First Choice">
+								// 	Visa
+								// 	</option>
+								// 	<option value="Second Choice">
+								// 	Mastercard
+								// 	</option>
+								// 	<option value="Third Choice">
+								// 	Amex
+								// 	</option>
+								// 	<option value="Fourth Choice">
+								// 	Discover
+								// 	</option>
+								// </select>
 

@@ -15,9 +15,9 @@ module.exports = React.createClass({
 		return (
 			<div className="container-fluid loginPage">
 				<div className="row">
-					<div className="col-sm-3">
+					<div className="col-sm-4">
 					</div>
-					<div className="col-sm-6">
+					<div className="col-sm-4">
 						<form className="form" onSubmit={this.onLogin}>
 							<h2 className="logRegister">Log In</h2>
 							<input type="text" ref="username" placeholder="username" />
@@ -28,7 +28,7 @@ module.exports = React.createClass({
 							{hasError}
 						</form>
 					</div>
-					<div className="col-sm-3">
+					<div className="col-sm-4">
 					</div>
 				</div>
 			</div>
