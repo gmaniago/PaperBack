@@ -31962,6 +31962,47 @@ module.exports = React.createClass({
 							),
 							this.state.categories
 						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'panel panel-warning panel-pricing' },
+						React.createElement(
+							'div',
+							{ className: 'panel-heading' },
+							React.createElement('i', { className: 'fa fa-desktop' }),
+							React.createElement(
+								'h3',
+								{ className: 'text-center' },
+								'Staff Picks'
+							),
+							React.createElement(
+								'p',
+								{ className: 'text-center' },
+								'We have had the leisure of exploring these titles. You should too!'
+							)
+						),
+						React.createElement(
+							'ul',
+							{ className: 'list-group text-center' },
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								React.createElement('img', { src: '../images/451.jpg', height: '250', width: '170' })
+							),
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								React.createElement('img', { src: '../images/Odd_Thomas.jpg', height: '250', width: '170' })
+							),
+							React.createElement(
+								'li',
+								{ className: 'list-group-item' },
+								React.createElement('i', { className: 'fa fa-check' }),
+								React.createElement('img', { src: '../images/zombie.jpg', height: '250', width: '170' })
+							)
+						)
 					)
 				),
 				React.createElement(
@@ -32047,36 +32088,37 @@ module.exports = React.createClass({
 			}, 0);
 			placements.push(React.createElement(
 				'div',
-				{ id: book.id, className: 'checkoutCart col-sm-6 col-sm-offset-2' },
+				{ id: book.id },
 				React.createElement(
-					'tbody',
+					'ul',
 					null,
 					React.createElement(
-						'tr',
+						'li',
+						null,
+						React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' })
+					),
+					React.createElement(
+						'li',
 						null,
 						React.createElement(
-							'td',
-							null,
-							React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' }),
-							React.createElement(
-								'a',
-								{ href: '#bookDetails/' + book.id },
-								book.get('title')
-							)
-						),
+							'a',
+							{ href: '#bookDetails/' + book.id },
+							book.get('title')
+						)
+					),
+					React.createElement(
+						'li',
+						null,
+						'Quantity:',
+						qty
+					),
+					React.createElement(
+						'li',
+						null,
 						React.createElement(
-							'td',
-							null,
-							qty
-						),
-						React.createElement(
-							'td',
-							null,
-							React.createElement(
-								'button',
-								{ onClick: this.removeBook.bind(this, book) },
-								'Remove'
-							)
+							'button',
+							{ onClick: this.removeBook.bind(this, book) },
+							'Remove'
 						)
 					)
 				)
@@ -32084,46 +32126,23 @@ module.exports = React.createClass({
 		}
 		return React.createElement(
 			'div',
-			{ className: 'checkoutContainer col-sm-6 col-sm-offset-3' },
-			React.createElement(
-				'table',
-				{ className: 'table table-bordered table-hover' },
-				React.createElement(
-					'thead',
-					null,
-					React.createElement(
-						'tr',
-						null,
-						React.createElement(
-							'th',
-							null,
-							'Book Title'
-						),
-						React.createElement(
-							'th',
-							null,
-							'Quantity'
-						),
-						React.createElement(
-							'th',
-							null,
-							'Edit'
-						)
-					)
-				)
-			),
+			{ className: 'checkoutCart' },
 			React.createElement(
 				'div',
-				null,
+				{ className: 'col-sm-6' },
 				placements
 			),
 			React.createElement(
-				'a',
-				{ href: '#confirmation' },
+				'div',
+				{ className: 'col-sm-6' },
 				React.createElement(
-					'button',
-					{ id: 'shipBtn' },
-					'Ship my Books'
+					'a',
+					{ href: '#confirmation' },
+					React.createElement(
+						'button',
+						{ id: 'shipBtn' },
+						'Ship my Books'
+					)
 				)
 			)
 		);
@@ -32158,11 +32177,29 @@ module.exports = React.createClass({
 
 		return React.createElement(
 			'div',
-			null,
+			{ className: 'container-fluid confirmation-page' },
 			React.createElement(
-				'h1',
-				null,
-				'Your books will be shipped to you soon! Thank you!'
+				'div',
+				{ className: 'row' },
+				React.createElement(
+					'div',
+					{ className: 'col-md-6' },
+					React.createElement(
+						'h2',
+						null,
+						'Your books will be shipped to you soon!'
+					),
+					React.createElement(
+						'h3',
+						null,
+						'We will get them into your door in now time! Check out our rocket!'
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'col-md-6' },
+					React.createElement('img', { src: '../images/rocket.jpg.gif', height: '100%', width: '100%' })
+				)
 			)
 		);
 	}

@@ -16,6 +16,11 @@ body, h1,p{
 	font-family: $fontFamily;
 }
 
+body {
+	background: #ECF0F1;
+	height: 100%;
+}
+
 a {
 	text-decoration: none;
 	font-family: $fontFamily;
@@ -315,6 +320,16 @@ header {
 	}
 }
 
+.search-category-container {
+	.panel {
+	margin: 2em;
+	p {
+		margin-left:1em;
+		margin-right: 1em;
+		}
+	}
+}
+
 #browseBooks {
 	text-align: center;
 }
@@ -350,15 +365,29 @@ padding-top:20px;
 
 // cart details start here
 
-// .checkoutCart {
-// 	float: left;
-// 	border: 1px solid black;
-// 	tr {
-// 		text-align: center;
-// 		border-bottom: 1px solid black;
-// 		width: 100%;
-// 	}
-// }
+.checkoutCart {
+	margin-top: 3em;
+	li {
+		list-style: none;
+		float: left;
+		padding-left: 1em;
+	}
+	button {
+		background: $buttonBackground;
+		border: none;
+		height: 2em;
+		margin-top: 1em;
+		width: 10em;
+		outline-color: $buttonBackground;
+		color: white;
+	}
+}
+
+
+
+
+
+
 
 .btn-danger, .btn-warning {
 	border-radius: 0;
@@ -367,12 +396,22 @@ padding-top:20px;
 #footer {
 	text-align: center;
 	background: $background-color;
-	margin-top: 2em;
 	font-size: 1.2em;
 	height: 2.5em;
 	padding-top: .5em;
+	margin-top: 2em;
 	a{
 		padding-right: 5%;
 		color: $fontColorBlack;
 	}
+}
+
+.confirmation-page {
+	img {
+		margin-top: 14em;
+	}
+}
+
+hr {
+	border-color: #d3d3d3;
 }

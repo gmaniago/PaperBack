@@ -44,47 +44,25 @@ module.exports = React.createClass({
           	return cur.get('qty') + sum
           }, 0)
           placements.push(	
-	        <div id={book.id} className="checkoutCart col-sm-6 col-sm-offset-2">
-	          	<tbody>
-					<tr>
-						<td>
-							<img className="image" src={book.get('image')} height="120px" width="80px"/>
-							<a href={'#bookDetails/'+book.id}>{book.get('title')}</a>
-						</td>		
-						<td>
-							{qty}
-						</td>
-						<td>
-							<button onClick={ this.removeBook.bind(this, book) }>Remove</button>
-						</td>
-					</tr>					
-				</tbody>
+	        <div id={book.id}>
+          		<ul>
+					<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
+					<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
+					<li>Quantity:{qty}</li>
+					<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button></li>
+				</ul>
 			</div>
 			)
 		}	
 		return (		
-				<div className="checkoutContainer col-sm-6 col-sm-offset-3">
-					<table className="table table-bordered table-hover">
-						<thead>
-							<tr>
-								<th>
-									Book Title
-								</th>
-								<th>
-									Quantity
-								</th>
-								<th>
-									Edit
-								</th>
-							</tr>
-						</thead>
-					</table>
-					<div >
-						{placements}
+				<div className="checkoutCart">
+						<div className="col-sm-6">
+					{placements}
 					</div>
+					<div className="col-sm-6">
 					<a href="#confirmation"><button id="shipBtn">Ship my Books</button></a>
-				</div>
-			
+					</div>
+				</div>			
 		);
 	},
 	removeBook: function(book) {
