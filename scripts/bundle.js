@@ -32044,6 +32044,7 @@ var $ = require('jquery');
 var UserModel = require('../models/UserModel');
 var BooksModel = require('../models/BooksModel');
 var CartPlacementModel = require('../models/CartPlacementModel.js');
+var ShipmentModel = require('../models/ShipmentModel.js');
 
 var query = new Parse.Query(CartPlacementModel);
 
@@ -32060,6 +32061,7 @@ module.exports = React.createClass({
 		var _this = this;
 
 		query.equalTo('user', Parse.User.current());
+		query.equalTo('shipment', undefined);
 		query.include("book");
 		query.find({
 			success: function success(original_placements) {
@@ -32095,23 +32097,20 @@ module.exports = React.createClass({
 					React.createElement(
 						'li',
 						null,
-						React.createElement('img', { className: 'image', src: book.get('image'), height: '120px', width: '80px' })
-					),
-					React.createElement(
-						'li',
-						null,
 						React.createElement(
 							'a',
 							{ href: '#bookDetails/' + book.id },
 							book.get('title')
 						)
 					),
+					React.createElement('br', null),
 					React.createElement(
 						'li',
 						null,
 						'Quantity:',
 						qty
 					),
+					React.createElement('br', null),
 					React.createElement(
 						'li',
 						null,
@@ -32120,32 +32119,49 @@ module.exports = React.createClass({
 							{ onClick: this.removeBook.bind(this, book) },
 							'Remove'
 						)
-					)
+					),
+					React.createElement('br', null),
+					React.createElement('br', null)
 				)
 			));
 		}
+
+		var enableShipping = placements.length > 0;
 		return React.createElement(
 			'div',
 			{ className: 'checkoutCart' },
 			React.createElement(
 				'div',
 				{ className: 'col-sm-6' },
+				React.createElement(
+					'h3',
+					null,
+					' Ready to get these on your hands!'
+				),
 				placements
 			),
 			React.createElement(
 				'div',
 				{ className: 'col-sm-6' },
-				React.createElement(
-					'a',
-					{ href: '#confirmation' },
-					React.createElement(
-						'button',
-						{ id: 'shipBtn' },
-						'Ship my Books'
-					)
-				)
+				this.shippingButton(enableShipping),
+				React.createElement('br', null)
 			)
 		);
+	},
+	shippingButton: function shippingButton(enableShipping) {
+		if (enableShipping) {
+			return React.createElement(
+				'button',
+				{ onClick: this.shipCart, id: 'shipBtn' },
+				'Ship my Books'
+			);
+		} else {
+			return React.createElement(
+				'button',
+				{ onClick: this.shipCart, id: 'shipBtn', disabled: true },
+				'Ship my Books'
+			);
+		}
 	},
 	removeBook: function removeBook(book) {
 		query.equalTo('user', Parse.User.current());
@@ -32160,21 +32176,69 @@ module.exports = React.createClass({
 				console.log(_error);
 			}
 		});
+	},
+	shipCart: function shipCart() {
+		var shipment = new ShipmentModel();
+		var relation = shipment.relation("placements");
+		for (var book_id in this.state.placements) {
+			var placements = this.state.placements[book_id];
+			placements.map(function (placement) {
+				relation.add(placement);
+			});
+		}
+		shipment.setACL(new Parse.ACL(Parse.User.current()));
+		var self = this;
+		shipment.save({
+			success: function success(shipment) {
+				for (var book_id in self.state.placements) {
+					var placements = self.state.placements[book_id];
+					placements.map(function (placement) {
+						placement.set('shipment', shipment);
+						placement.save();
+					});
+				}
+
+				console.log(shipment);
+				self.props.router.confirmation(shipment.id);
+			}
+		});
 	}
 
 });
 
-},{"../models/BooksModel":172,"../models/CartPlacementModel.js":173,"../models/UserModel":174,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
+// <img className="image" src={book.get('image')} height="120px" width="80px"/>
+
+},{"../models/BooksModel":172,"../models/CartPlacementModel.js":173,"../models/ShipmentModel.js":174,"../models/UserModel":175,"jquery":4,"react":160,"react-dom":5}],165:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var ShipmentModel = require('../models/ShipmentModel.js');
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
+	getInitialState: function getInitialState() {
+		return {
+			shipment: null,
+			placements: []
+		};
+	},
+	componentWillMount: function componentWillMount() {
+		var self = this;
+		var query = new Parse.Query(ShipmentModel);
+		query.get(this.props.shipmentId).then(function (shipment) {
+			var relation = shipment.relation('placements');
+			relation.query().include("book").find({
+				success: function success(placements) {
+					self.setState({ shipment: shipment, placements: placements });
+				}
+			});
+		}, function (err) {
+			console.log(err);
+		});
+	},
 	render: function render() {
-
 		return React.createElement(
 			'div',
 			{ className: 'container-fluid confirmation-page' },
@@ -32189,10 +32253,11 @@ module.exports = React.createClass({
 						null,
 						'Your books will be shipped to you soon!'
 					),
+					this.renderShipment(),
 					React.createElement(
 						'h3',
 						null,
-						'We will get them into your door in now time! Check out our rocket!'
+						'We will get them into your door in no time! Check out our rocket!'
 					)
 				),
 				React.createElement(
@@ -32202,10 +32267,19 @@ module.exports = React.createClass({
 				)
 			)
 		);
+	},
+	renderShipment: function renderShipment() {
+		return React.createElement(
+			'span',
+			null,
+			this.state.placements.map(function (placement) {
+				return placement.get('book').get('title');
+			})
+		);
 	}
 });
 
-},{"react":160,"react-dom":5}],166:[function(require,module,exports){
+},{"../models/ShipmentModel.js":174,"react":160,"react-dom":5}],166:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32879,7 +32953,7 @@ var Router = Backbone.Router.extend({
 		'browse': 'browse',
 		'addBook': 'addBook',
 		'bookDetails/:id': 'bookDetails',
-		'confirmation': 'confirmation',
+		'confirmation/:id': 'confirmation',
 		'cart': 'cart'
 	},
 	home: function home() {
@@ -32891,8 +32965,8 @@ var Router = Backbone.Router.extend({
 	addBook: function addBook() {
 		ReactDOM.render(React.createElement(AddBooksComponent, { router: r }), app);
 	},
-	confirmation: function confirmation() {
-		ReactDOM.render(React.createElement(ConfirmationComponent, { router: r }), app);
+	confirmation: function confirmation(id) {
+		ReactDOM.render(React.createElement(ConfirmationComponent, { router: r, shipmentId: id }), app);
 	},
 	login: function login() {
 		ReactDOM.render(React.createElement(LoginComponent, { router: r }), app);
@@ -32928,6 +33002,13 @@ module.exports = Parse.Object.extend({
 });
 
 },{}],174:[function(require,module,exports){
+'use strict';
+
+module.exports = Parse.Object.extend({
+  className: 'shipments'
+});
+
+},{}],175:[function(require,module,exports){
 'use strict';
 
 module.exports = Parse.Object.extend({

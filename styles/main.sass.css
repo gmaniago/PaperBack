@@ -306,6 +306,8 @@ header {
     width: 10em;
     outline-color: #FF6A44;
     color: white; }
+  .checkoutCart h3 {
+    margin-left: 9em; }
 
 .btn-danger, .btn-warning {
   border-radius: 0; }

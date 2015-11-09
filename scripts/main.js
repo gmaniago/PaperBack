@@ -28,7 +28,7 @@ var Router = Backbone.Router.extend({
 		'browse': 'browse',
 		'addBook': 'addBook',
 		'bookDetails/:id': 'bookDetails',
-		'confirmation': 'confirmation',
+		'confirmation/:id': 'confirmation',
 		'cart': 'cart'
 	},
 	home: function() {
@@ -49,9 +49,9 @@ var Router = Backbone.Router.extend({
 			app
 		);
 	},
-	confirmation: function() {
+	confirmation: function(id) {
 	ReactDOM.render(
-			<ConfirmationComponent router={r} />, 
+			<ConfirmationComponent router={r} shipmentId={id}/>, 
 			app
 		);
 	},

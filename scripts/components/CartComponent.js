@@ -5,6 +5,7 @@ var $ = require ('jquery');
 var UserModel = require('../models/UserModel');
 var BooksModel = require('../models/BooksModel');
 var CartPlacementModel = require('../models/CartPlacementModel.js');
+var ShipmentModel = require('../models/ShipmentModel.js');
 
 var query = new Parse.Query(CartPlacementModel);
 
@@ -17,6 +18,7 @@ module.exports = React.createClass({
 	},
 	componentWillMount: function() {
 		query.equalTo('user', Parse.User.current());
+		query.equalTo('shipment', undefined);
         query.include("book");
 		query.find({
 			success: (original_placements) => {
@@ -46,24 +48,34 @@ module.exports = React.createClass({
           placements.push(	
 	        <div id={book.id}>
           		<ul>
-					<li><img className="image" src={book.get('image')} height="120px" width="80px"/></li>
-					<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li>	
-					<li>Quantity:{qty}</li>
-					<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button></li>
+					<li><a href={'#bookDetails/'+book.id}>{book.get('title')}</a></li><br />	
+					<li>Quantity:{qty}</li><br />
+					<li><button onClick={ this.removeBook.bind(this, book) }>Remove</button></li><br /><br />
 				</ul>
 			</div>
 			)
-		}	
+        }
+
+        var enableShipping = placements.length > 0;
 		return (		
 				<div className="checkoutCart">
-						<div className="col-sm-6">
+					<div className="col-sm-6">
+					<h3> Ready to get these on your hands!</h3>
 					{placements}
 					</div>
 					<div className="col-sm-6">
-					<a href="#confirmation"><button id="shipBtn">Ship my Books</button></a>
+					{this.shippingButton(enableShipping)}
+					<br />
 					</div>
 				</div>			
 		);
+	},
+    shippingButton: function(enableShipping) {
+		if (enableShipping) {
+		  return <button onClick={this.shipCart} id="shipBtn">Ship my Books</button> 
+		 } else {
+                       return <button onClick={this.shipCart} id="shipBtn" disabled>Ship my Books</button> 
+					 }
 	},
 	removeBook: function(book) {
 		query.equalTo('user', Parse.User.current());
@@ -80,9 +92,37 @@ module.exports = React.createClass({
 				console.log(error);
 			}
 		});
+	},
+	shipCart: function(){
+		var shipment = new ShipmentModel()
+		var relation = shipment.relation("placements");
+		for (var book_id in this.state.placements) {
+			var placements = this.state.placements[book_id];
+			placements.map(function(placement) {
+				relation.add(placement);
+			});
+		}
+		shipment.setACL(new Parse.ACL(Parse.User.current()));
+		var self = this;
+		shipment.save({
+			success: function(shipment) {
+			for (var book_id in self.state.placements) {
+				var placements = self.state.placements[book_id];
+				placements.map(function(placement) {
+					placement.set('shipment', shipment);
+					placement.save();
+				});
+			}
+
+			console.log(shipment);
+			self.props.router.confirmation(shipment.id);
+
+			}
+		});
+
+
 	}
 
 });
 
-				
-
+				// <img className="image" src={book.get('image')} height="120px" width="80px"/>
