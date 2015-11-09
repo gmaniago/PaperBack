@@ -31748,11 +31748,9 @@ module.exports = React.createClass({
 			image: this.refs.image.value,
 			author: this.refs.author.value
 		});
-
 		newBook.save();
 		this.props.router.navigate('', { trigger: true });
 	}
-
 });
 
 },{"../models/BooksModel.js":172,"react":160,"react-dom":5}],162:[function(require,module,exports){
@@ -31787,7 +31785,6 @@ module.exports = React.createClass({
 			null,
 			'Loading'
 		);
-
 		if (this.state.book) {
 			content = React.createElement(
 				'div',
@@ -32125,7 +32122,6 @@ module.exports = React.createClass({
 				)
 			));
 		}
-
 		var enableShipping = placements.length > 0;
 		return React.createElement(
 			'div',
@@ -32197,8 +32193,6 @@ module.exports = React.createClass({
 						placement.save();
 					});
 				}
-
-				console.log(shipment);
 				self.props.router.confirmation(shipment.id);
 			}
 		});
@@ -32253,12 +32247,17 @@ module.exports = React.createClass({
 						null,
 						'Your books will be shipped to you soon!'
 					),
-					this.renderShipment(),
 					React.createElement(
 						'h3',
 						null,
 						'We will get them into your door in no time! Check out our rocket!'
-					)
+					),
+					React.createElement(
+						'h4',
+						null,
+						'These items are pending shipment:'
+					),
+					this.renderShipment()
 				),
 				React.createElement(
 					'div',
@@ -32270,7 +32269,7 @@ module.exports = React.createClass({
 	},
 	renderShipment: function renderShipment() {
 		return React.createElement(
-			'span',
+			'li',
 			null,
 			this.state.placements.map(function (placement) {
 				return placement.get('book').get('title');
@@ -32291,7 +32290,6 @@ module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
-
 		return React.createElement(
 			'div',
 			{ className: 'filter-container' },
@@ -32309,7 +32307,6 @@ module.exports = React.createClass({
 	},
 	filterTrigger: function filterTrigger(e) {
 		e.preventDefault();
-		// run the stateUpdate method from the FilterBox component using the current value of the <input> field
 		this.props.filterUpdate(this.refs.filterInput.value);
 	}
 });

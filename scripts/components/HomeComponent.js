@@ -13,8 +13,8 @@ module.exports = React.createClass({
 								<p className="centered">
 									<a className="btn" href="#register">Start your free month.</a>
 								</p>
-					    </header>
-					  </div>
+						</header>
+					</div>
 
 					<div className="container-fluid">
 						<div className="row">
@@ -37,7 +37,7 @@ module.exports = React.createClass({
 					</div>
 					<hr />
 
-					 <div className="container">
+					<div className="container">
 				        <div className="container-fluid">
 							<div className="row">
 								<div className="col-md-1">
@@ -52,76 +52,72 @@ module.exports = React.createClass({
 							</div>
 						</div>
 					</div>
-						<hr />
-
-						<div className="container-fluid">
-							<div className="row">
-								<div className="col-md-3">
-								</div>
-								<div className="col-md-6 firstMonth">
-								<h1 className="greyFont">First month is on us.</h1>
-								<p className="pBtn">
-									<a className=" btn btn-primary btn-large startButton" href="#register">Start your free month.</a>
-								</p>
-								</div>
-								<div className="col-md-3">
-								</div>
-
-							</div>
-						</div>
-						<hr />
-
-						<div className="col-md-4 col-md-offset-2 text-center pricing">
-						    <div className="panel panel-danger panel-pricing">
-						        <div className="panel-heading">
-						            <i className="fa fa-desktop"></i>
-						            <h3>Plan 1</h3>
-						        </div>
-						        <div className="panel-body text-center">
-						            <p><strong>$10 / Month</strong></p>
-						        </div>
-						        <ul className="list-group text-center">
-						            <li className="list-group-item"><i className="fa fa-check"></i> 1st Month Free</li>
-						            <li className="list-group-item"><i className="fa fa-check"></i> Borrow up 2 to books a month</li>
-						            <li className="list-group-item"><i className="fa fa-check"></i> Customer Service Support</li>
-						        </ul>
-						        <div className="panel-footer">
-						            <a className="btn btn-lg btn-block btn-danger" href="#register">Choose this Plan!</a>
-						        </div>
-						    </div>
-						</div>
-						<div className="col-md-4 text-center pricing">
-							<div className="panel panel-warning panel-pricing">
-							    <div className="panel-heading">
-							        <i className="fa fa-desktop"></i>
-							        <h3>Plan 2</h3>
-							    </div>
-							    <div className="panel-body text-center">
-							        <p><strong>$20 / Month</strong></p>
-							    </div>
-							    <ul className="list-group text-center">
-							        <li className="list-group-item"><i className="fa fa-check"></i> 1st Month Free</li>
-							        <li className="list-group-item"><i className="fa fa-check"></i> Unlimited Books</li>
-							        <li className="list-group-item"><i className="fa fa-check"></i> Customer Service Support</li>
-							    </ul>
-							    <div className="panel-footer">
-							        <a className="btn btn-lg btn-block btn-warning" href="#register">Choose this Plan!</a>
-							    </div>
-							</div>
-						</div>
-					</div>
 					<hr />
 					<div className="container-fluid">
 						<div className="row">
 							<div className="col-md-3">
 							</div>
 							<div className="col-md-6 firstMonth">
-								<h1 className="greyFont">And Of Course. Cancel Anytime!</h1>
+							<h1 className="greyFont">First month is on us.</h1>
+							<p className="pBtn">
+								<a className=" btn btn-primary btn-large startButton" href="#register">Start your free month.</a>
+							</p>
+							</div>
+							<div className="col-md-3">
 							</div>
 						</div>
 					</div>
-	    		</section>
-
+					<hr />
+					<div className="col-md-4 col-md-offset-2 text-center pricing">
+					    <div className="panel panel-danger panel-pricing">
+					        <div className="panel-heading">
+					            <i className="fa fa-desktop"></i>
+					            <h3>Plan 1</h3>
+					        </div>
+					        <div className="panel-body text-center">
+					            <p><strong>$10 / Month</strong></p>
+					        </div>
+					        <ul className="list-group text-center">
+					            <li className="list-group-item"><i className="fa fa-check"></i> 1st Month Free</li>
+					            <li className="list-group-item"><i className="fa fa-check"></i> Borrow up 2 to books a month</li>
+					            <li className="list-group-item"><i className="fa fa-check"></i> Customer Service Support</li>
+					        </ul>
+					        <div className="panel-footer">
+					            <a className="btn btn-lg btn-block btn-danger" href="#register">Choose this Plan!</a>
+					        </div>
+					    </div>
+					</div>
+					<div className="col-md-4 text-center pricing">
+						<div className="panel panel-warning panel-pricing">
+						    <div className="panel-heading">
+						        <i className="fa fa-desktop"></i>
+						        <h3>Plan 2</h3>
+						    </div>
+						    <div className="panel-body text-center">
+						        <p><strong>$20 / Month</strong></p>
+						    </div>
+						    <ul className="list-group text-center">
+						        <li className="list-group-item"><i className="fa fa-check"></i> 1st Month Free</li>
+						        <li className="list-group-item"><i className="fa fa-check"></i> Unlimited Books</li>
+						        <li className="list-group-item"><i className="fa fa-check"></i> Customer Service Support</li>
+						    </ul>
+						    <div className="panel-footer">
+						        <a className="btn btn-lg btn-block btn-warning" href="#register">Choose this Plan!</a>
+						    </div>
+						</div>
+					</div>
+				</div>
+				<hr />
+				<div className="container-fluid">
+					<div className="row">
+						<div className="col-md-3">
+						</div>
+						<div className="col-md-6 firstMonth">
+							<h1 className="greyFont">And Of Course. Cancel Anytime!</h1>
+						</div>
+					</div>
+				</div>
+    		</section>
 		)
 	}
 

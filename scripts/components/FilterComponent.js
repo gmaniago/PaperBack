@@ -7,7 +7,6 @@ var BooksModel = require('../models/BooksModel');
 
 module.exports = React.createClass({
 	render() {
-
 		return (
 			<div className="filter-container">
 				<form>
@@ -23,7 +22,6 @@ module.exports = React.createClass({
 	},
 	filterTrigger(e) {
 		e.preventDefault();
-		// run the stateUpdate method from the FilterBox component using the current value of the <input> field
 		this.props.filterUpdate(this.refs.filterInput.value);
 	}
 });

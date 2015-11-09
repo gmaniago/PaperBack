@@ -55,7 +55,6 @@ module.exports = React.createClass({
 			</div>
 			)
         }
-
         var enableShipping = placements.length > 0;
 		return (		
 				<div className="checkoutCart">
@@ -113,10 +112,7 @@ module.exports = React.createClass({
 					placement.save();
 				});
 			}
-
-			console.log(shipment);
 			self.props.router.confirmation(shipment.id);
-
 			}
 		});
 

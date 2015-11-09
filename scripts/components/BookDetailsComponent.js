@@ -24,7 +24,6 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		var content = <div>Loading</div>;
-
 		if(this.state.book) {
 			content = (
 				<div className="container-fluid bookDetails">
@@ -39,8 +38,7 @@ module.exports = React.createClass({
 							<a href="#browse"><button type="button" onClick ={this.clicked}>Add Book</button></a>
 						</div>
 					</div>
-				</div>
-		
+				</div>	
 			)
 		}
 		return(

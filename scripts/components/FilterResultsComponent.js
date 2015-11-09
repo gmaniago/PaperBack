@@ -8,7 +8,6 @@ module.exports = React.createClass({
 		if(this.props.drummers) {
 			// this is grabbing the input correctly and converting it to lower case
 			var input = this.props.filter.toLowerCase();
-
 			var filteredContent = this.props.books.filter(function(book) {
 				return (drummer.get('title').toLowerCase().indexOf(input) != -1);
 			})
@@ -20,7 +19,6 @@ module.exports = React.createClass({
 				);
 			});
 		}
-
 		return (
 			<div>
 				{filteredContent}

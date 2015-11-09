@@ -328,3 +328,6 @@ header {
 
 hr {
   border-color: #d3d3d3; }
+
+.confirmationCart {
+  display: block; }

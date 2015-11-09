@@ -36,20 +36,20 @@ module.exports = React.createClass({
 				<div className="row">
 					<div className="col-md-6">
 						<h2>Your books will be shipped to you soon!</h2>
-						{this.renderShipment()}
 						<h3>We will get them into your door in no time! Check out our rocket!</h3>
+						<h4>These items are pending shipment:</h4>
+						{this.renderShipment()}
 					</div>
 					<div className="col-md-6">
 						<img src="../images/rocket.jpg.gif" height="100%" width="100%"/>
 					</div>
-
 				</div>
 			</div>
 		);
 	},
 	renderShipment() {
-      return <span>{this.state.placements.map(function(placement) {
+      return <li>{this.state.placements.map(function(placement) {
       	return placement.get('book').get('title');
-      })}</span>
+      })}</li>
 	}
 });
