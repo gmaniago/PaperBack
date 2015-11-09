@@ -32223,8 +32223,11 @@ module.exports = React.createClass({
 		var query = new Parse.Query(ShipmentModel);
 		query.get(this.props.shipmentId).then(function (shipment) {
 			var relation = shipment.relation('placements');
+
+			console.log(relation);
 			relation.query().include("book").find({
 				success: function success(placements) {
+					console.log(placements);
 					self.setState({ shipment: shipment, placements: placements });
 				}
 			});
@@ -32233,12 +32236,29 @@ module.exports = React.createClass({
 		});
 	},
 	render: function render() {
+		var renderShipment = this.state.placements.map(function (placement) {
+			return React.createElement(
+				'div',
+				null,
+				placement.get('book').get('title')
+			);
+		});
 		return React.createElement(
 			'div',
 			{ className: 'container-fluid confirmation-page' },
 			React.createElement(
 				'div',
 				{ className: 'row' },
+				React.createElement(
+					'div',
+					{ className: 'col-md-6' },
+					React.createElement(
+						'h4',
+						null,
+						'These items are pending shipment:'
+					),
+					renderShipment
+				),
 				React.createElement(
 					'div',
 					{ className: 'col-md-6' },
@@ -32252,28 +32272,9 @@ module.exports = React.createClass({
 						null,
 						'We will get them into your door in no time! Check out our rocket!'
 					),
-					React.createElement(
-						'h4',
-						null,
-						'These items are pending shipment:'
-					),
-					this.renderShipment()
-				),
-				React.createElement(
-					'div',
-					{ className: 'col-md-6' },
 					React.createElement('img', { src: '../images/rocket.jpg.gif', height: '100%', width: '100%' })
 				)
 			)
-		);
-	},
-	renderShipment: function renderShipment() {
-		return React.createElement(
-			'li',
-			null,
-			this.state.placements.map(function (placement) {
-				return placement.get('book').get('title');
-			})
 		);
 	}
 });
